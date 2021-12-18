@@ -16,7 +16,7 @@ function Form(props:any) {
 				<input type="text" placeholder="Enter Password" name="pass" required></input>
 
 				
-				<span className="pass"> <a href="#">Forgot password?</a></span>			
+				<span className="pass"> <a href="#">Forgot your password?</a></span>			
 			</div>
 			
 			<div className="container">
