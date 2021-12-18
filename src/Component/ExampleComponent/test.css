@@ -1,4 +1,61 @@
-.black{
-	background-color: black;
-	color:white;
+form {
+	border: 3px solid #f1f1f1;
+	margin: 5px auto; 
+  	width: 25vw;
+	height: 38vh;
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-ms-transform: translateY(-50%);
+	transform: translate(-50%, -50%);
+
+}
+
+.container{
+	padding: 16px;
+}
+
+/*input */
+input[type=text], input[type=password] {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+/*button */
+.centerBtn {
+	display: flex;
+  	justify-content: center;
+  	align-items: center;
+}
+button {
+	
+	background-color: #FFCB91;
+	color: white;
+	font-weight: bold;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border:none;
+	cursor: pointer;
+	
+}
+button:hover {
+	opacity: 0.8;
+}
+
+/* icon login */
+.labelContainer{
+	text-align: center;
+	padding-top:16px;
+}
+#labelContainer{
+	display: inline-block;
+}
+
+/*forget pass*/
+span.pass {
+  float: right;
 }

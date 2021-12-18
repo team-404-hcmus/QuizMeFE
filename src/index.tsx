@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {BTS} from "Component/ExampleComponent";
+import {Form} from "Component/ExampleComponent";
 
 ReactDOM.render(<>
-<BTS message = "HELLO TUAN CUI">
-
-</BTS>
+<Form>
+    
+</Form>
 </>, document.getElementById("root"));
