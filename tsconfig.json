@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "importHelpers": true,
     "baseUrl": "src",
     "target": "es5",
     "lib": [
