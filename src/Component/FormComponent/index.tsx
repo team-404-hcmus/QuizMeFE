@@ -1,5 +1,5 @@
 import "./test.css";
-function Form(props:any) {
+function QForm(props:any) {
 	
 	return (
 	  <form>
@@ -30,4 +30,4 @@ function Form(props:any) {
 	  </form>
 	)
   }
-export {Form}
+export {QForm}

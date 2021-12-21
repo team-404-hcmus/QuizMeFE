@@ -58,3 +58,9 @@ button:hover {
 span.pass {
   float: right;
 }
+
+
+.TextBoxLabel{
+	transform: translateY(-18px);
+	z-index: -1;
+}
