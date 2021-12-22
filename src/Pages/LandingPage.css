@@ -11,7 +11,9 @@
     z-index: 2;
   }
  #LandingContainer
- {
+ {  
+    width: 100vw;
+    height: 100vh;
     position:relative ;
     z-index: 1;
  } 
@@ -26,18 +28,17 @@
     font-size: 20px;
 }
 .middleLP{
-    display: block;
     position: fixed;  
-    width: 1197px;
-    height: 706px;
-    background-color: rgba(255,255,255,0.1);
-    box-shadow: 11px 4px 15px 9px rgba(0, 0, 0, 0.25);
+    width: 65vw;
+    height: 70vh;
+    background-color: rgba(255,255,255,1);
+    box-shadow: 11px 4px 15px 9px rgba(0, 0, 0, 0.4);
     border-radius: 10px;
 }
 h1{
     position: absolute;  
-    left: 46px;
-    top: 91px;
+    left:5%;
+    top: 8%;
     font-family: Saira;
     font-weight: bold;
     font-size: 72px;
@@ -48,8 +49,8 @@ h1{
 h2{
     position: absolute;
     height: 88px;
-    left: 46px;
-    top: 200px;
+    left: 5%;
+    top: 30%;
 
     font-family: Saira;
     font-weight: bold;
@@ -58,24 +59,25 @@ h2{
     align-items: center;
     letter-spacing: 0.26em;
 }
-.h3container
-{
-    left: 46px;
-    top: 288px;
-}
+
 h3{
     position: absolute;
     width: 540px;
     height: 263px;
-    left: 46px;
-    top: 288px;
+    left: 5%;
+    top: 40%;
     font-family: Saira;
     font-weight: normal;
     font-size: 30px;
     line-height: 474.9%;
-    /* or 142px */
-
-    display: flex;
     align-items: center;
+}
 
+.landingImg
+{
+    position: absolute;
+    width: 45%;
+    height: 100%;
+    right: 0;
+    border-radius: 10px;
 }
