@@ -1,9 +1,9 @@
-import "./test.css";
-function QForm(props:any) {
+import "./form.css";
+function LoginForm(props:any) {
 	
 	return (
-	  <form>
-		<div className="Login">	
+	  <form className="Login">
+		<div >	
 			<div className="labelContainer">
 				<label id="label"><b>Login</b></label>
 			</div>
@@ -30,4 +30,4 @@ function QForm(props:any) {
 	  </form>
 	)
   }
-export {QForm}
+export {LoginForm}

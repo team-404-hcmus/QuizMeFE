@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {QForm} from "Component/FormComponent";
-import {Home} from "Pages/Home";
+import {LoginForm} from "Component/FormComponent";
+import {LandingPage,Home} from "Pages/LandingPage";
 ReactDOM.render(<>
-<Home></Home>
+<LandingPage></LandingPage>
 </>, document.getElementById("root"));
