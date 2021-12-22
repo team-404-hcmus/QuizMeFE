@@ -29,5 +29,32 @@ function LoginForm(props:any) {
 
 	  </form>
 	)
-  }
-export {LoginForm}
+}
+function ForgetPassForm(props:any) {
+	return(
+		<form>
+			<div >	
+				<div className="labelContainer">
+					<label id="label"><b>FORGOT</b></label>
+				</div>
+				<div className="labelContainer">
+					<label id="label"><b>PASSWORD</b></label>
+				</div>
+				<div className="container">
+					<b>We will send new password to your email</b>
+				</div>
+				<div className="container">
+					<label htmlFor="schoolID"><b>School ID</b></label>
+					<input type="text" placeholder="Enter School ID" name="schoolID" required></input>		
+				</div>
+				
+				<div className="container">
+					<div className="centerBtn">
+						<button type="submit">Submit</button>
+					</div>	
+				</div>							
+			</div>
+		</form>
+	)
+}
+export {LoginForm,ForgetPassForm}

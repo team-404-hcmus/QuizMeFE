@@ -1,12 +1,11 @@
-import { LoginForm } from "Component/FormComponent";
+import { LoginForm,ForgetPassForm } from "Component/FormComponent";
 import React, { useState } from "react";
 import "./LandingPage.css";
 function LandingPage()
 {
-	const [state, setState] = useState(false);
-	
+	const [login, setLogin] = useState(false);
 	function clickLogin(){
-		setState( function(e){
+		setLogin( function(e){
 			return !e;
 		})
 		const overlay = document.getElementById('overlay');
@@ -16,7 +15,7 @@ function LandingPage()
 	}
 	function offOverlay()//tủn off overlay background
 	{
-		setState( function(e){
+		setLogin( function(e){
 			return !e;
 		})
 		const overlay = document.getElementById('overlay');
@@ -27,7 +26,7 @@ function LandingPage()
 
 	return (
 		<>
-			{state?<LoginForm></LoginForm>:null}
+			{login?<LoginForm></LoginForm>:null}
 			<div id="overlay" onClick={offOverlay}>		
 			</div>
 			<div id="LandingContainer"
