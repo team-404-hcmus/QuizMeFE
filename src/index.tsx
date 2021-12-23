@@ -6,7 +6,8 @@ import {QuizPlaying} from "Pages/QuizPlaying";
 
 function APP(){
 	const [state, setstate] = useState<number>(0);
-	if(state ===0){
+	if(state ===0){		
+		
 		return <LandingPage stateFunction={setstate}></LandingPage>;
 	}
 	else{

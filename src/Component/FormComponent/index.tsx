@@ -65,7 +65,7 @@ function LoginForm(props:any) {
 			
 			<div className="container">
 				<div className="centerBtn">
-					<button type="submit">Login</button>
+					<button className="landingBtn" type="submit">Login</button>
 				</div>	
 			</div>					
 		</div>
@@ -92,7 +92,7 @@ function ForgetPassForm(props:any) {
 				
 				<div className="container">
 					<div className="centerBtn">
-						<button type="submit">Submit</button>
+						<button className="landingBtn" type="submit">Submit</button>
 					</div>	
 				</div>							
 			</div>

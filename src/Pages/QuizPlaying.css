@@ -85,14 +85,14 @@
     background-color: #ff3333;
   }
   
-  button:hover {
+  .answersBtn:hover {
     background-color: #555e7d;
   }
   
-  button:focus {
+  .answersBtn:focus {
     outline: none;
   }
   
-  button svg {
+  .answersBtn svg {
     margin-right: 5px;
   }

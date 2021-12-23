@@ -26,6 +26,14 @@
     right: 3vw;
     top: 5px;
     font-size: 20px;
+    background-color: #FFCB91;
+	color: white;
+	font-weight: bold;
+	padding: 14px 20px;
+	margin: 1% 0;
+	border:none;
+	cursor: pointer;
+	border-radius: 5px;
 }
 .middleLP{
     position: fixed;  
