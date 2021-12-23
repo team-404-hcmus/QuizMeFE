@@ -1,7 +1,7 @@
 import { LoginForm,ForgetPassForm } from "Component/FormComponent";
 import React, { useState } from "react";
 import "./LandingPage.css";
-function LandingPage()
+function LandingPage(props:any)
 {
 	const [login, setLogin] = useState(false);
 	function clickLogin(){
@@ -26,7 +26,7 @@ function LandingPage()
 
 	return (
 		<>
-			{login?<LoginForm></LoginForm>:null}
+			{login?<LoginForm setPage={props.stateFunction}></LoginForm>:null}
 			<div id="overlay" onClick={offOverlay}>		
 			</div>
 			<div id="LandingContainer"
