@@ -53,9 +53,9 @@ button:hover {
 	text-align: center;
 	padding-top:16px;
 }
-#label{
+.label{
 	display: inline-block;
-	font-size: xx-large;
+	font-size: 40px;
 }
 
 /*forget pass*/
