@@ -54,8 +54,4 @@ function LandingPage()
 	)
 }
 
-function Home(){
-	
-
-}
-export {Home,LandingPage}
+export {LandingPage}
