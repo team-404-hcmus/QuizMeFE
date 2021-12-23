@@ -1,8 +1,15 @@
 import "./form.css";
+import React, { useState } from "react";
 function LoginForm(props:any) {
-	
+	const [getPass, setgetPass] = useState(false);
+	function clickGetPass(){
+		setgetPass( function(e){
+			return !e;
+		})
+	}
 	return (
 	  <form className="Login">
+		{getPass?<ForgetPassForm></ForgetPassForm>:null}
 		<div >	
 			<div className="labelContainer">
 				<label className="label"><b>Login</b></label>
@@ -16,24 +23,22 @@ function LoginForm(props:any) {
 				<input type="text" placeholder="Enter Password" name="pass" required></input>
 
 				
-				<span className="pass"> <a href="#">Forgot your password?</a></span>			
+				<span className="pass" onClick={clickGetPass}> <a href="#">Forgot your password?</a></span>			
 			</div>
 			
 			<div className="container">
 				<div className="centerBtn">
 					<button type="submit">Login</button>
 				</div>	
-			</div>		
-			
+			</div>					
 		</div>
-
 	  </form>
 	)
 }
 function ForgetPassForm(props:any) {
 	return(
 		<form>
-			<div >	
+			<div>	
 				<div className="labelContainer">
 					<label className="label"><b>FORGOT</b></label>
 				</div>
