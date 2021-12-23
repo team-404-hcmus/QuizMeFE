@@ -15,5 +15,5 @@ function APP(){
 	}
 }
 ReactDOM.render(<>
-<APP></APP>
+<QuizPlaying></QuizPlaying>
 </>, document.getElementById("root"));

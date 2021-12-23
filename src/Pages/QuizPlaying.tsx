@@ -38,6 +38,15 @@ function QuizPlaying() {
 				{ answerText: '7', isCorrect: true },
 			],
 		},
+		{
+			questionText: 'What is the capital of France ?',
+			answerOptions: [
+				{ answerText: 'Paris', isCorrect: false },
+				{ answerText: 'Bangkok', isCorrect: false },
+				{ answerText: 'New York', isCorrect: false },
+				{ answerText: 'HaNoi', isCorrect: true },
+			],
+		},
 	];
 
 	const [curQuest, setcurQuest] = useState(0);
@@ -64,7 +73,7 @@ function QuizPlaying() {
 						You scored {score} out of {questions.length}
 					</div>
 				) : (
-					<>
+					<div className="formContainer">
 						<div className='question-section'>
 							<div className='question-count'>
 								<span>Question {curQuest + 1}</span>/{questions.length}
@@ -76,7 +85,7 @@ function QuizPlaying() {
 								<button className='answersBtn' onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
 							))}
 						</div>
-					</>
+					</div>
 				)}
 			</div>
 		</div>

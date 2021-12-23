@@ -30,15 +30,11 @@ function LoginForm(props:any) {
 			let data = await response.text();
 			console.log(data);
 			const response2 = await fetch("http://localhost:8080/api/auth", {
-		method: 'POST', // *GET, POST, PUT, DELETE, etc.
-		mode: 'cors', // no-cors, *cors, same-origin
-		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-		headers: {
-		'Content-Type': 'application/json'
-		// 'Content-Type': 'application/x-www-form-urlencoded',
-		},
-
-				body: JSON.stringify({key:data}) // body data type must match "Content-Type" header
+			method: 'POST', // *GET, POST, PUT, DELETE, etc.
+			mode: 'cors', // no-cors, *cors, same-origin
+			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+			headers: {'Content-Type': 'application/json'},// 'Content-Type': 'application/x-www-form-urlencoded',		
+			body: JSON.stringify({key:data}) // body data type must match "Content-Type" header
 			});
 			if(response2.status === 200)
 			{
