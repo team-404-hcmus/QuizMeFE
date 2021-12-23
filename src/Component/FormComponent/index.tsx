@@ -5,7 +5,7 @@ function LoginForm(props:any) {
 	  <form className="Login">
 		<div >	
 			<div className="labelContainer">
-				<label id="label"><b>Login</b></label>
+				<label className="label"><b>Login</b></label>
 			</div>
 			
 			<div className="container">
@@ -35,10 +35,10 @@ function ForgetPassForm(props:any) {
 		<form>
 			<div >	
 				<div className="labelContainer">
-					<label id="label"><b>FORGOT</b></label>
+					<label className="label"><b>FORGOT</b></label>
 				</div>
 				<div className="labelContainer">
-					<label id="label"><b>PASSWORD</b></label>
+					<label className="label"><b>PASSWORD</b></label>
 				</div>
 				<div className="container">
 					<b>We will send new password to your email</b>
