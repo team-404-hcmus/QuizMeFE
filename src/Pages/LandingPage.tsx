@@ -39,11 +39,11 @@ function LandingPage(props:any)
 				<div className="LgBtnContainer">
 					<button className="LoginButton"onClick={clickLogin}>Login</button>
 				</div>		
-				<form className="middleLP">
-					<div className="Test">
-						<h1> JOIN QUIZME</h1>
-						<h2> Educational Inspiration</h2>
-						<h3> The power of interactive is in your device
+				<form className='middleLP'>
+					<div className='landingPageText'>
+						<h1 className='landingPageH1'> JOIN QUIZME</h1>
+						<h2 className='landingPageH2'> Educational Inspiration</h2>
+						<h3 className='landingPageH3'> The power of interactive is in your device
 							We bring the ease of learning to your student</h3>				
 						<img className="landingImg" src={process.env.PUBLIC_URL+"/images/middlanding.png"} width="100" alt="test"></img>													
 					</div>			

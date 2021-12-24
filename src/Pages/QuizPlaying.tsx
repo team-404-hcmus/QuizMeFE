@@ -39,7 +39,7 @@ function QuizPlaying() {
 			],
 		},
 		{
-			questionText: 'What is the capital of France ?',
+			questionText: 'What is the capital of VietNam ?',
 			answerOptions: [
 				{ answerText: 'Paris', isCorrect: false },
 				{ answerText: 'Bangkok', isCorrect: false },
@@ -52,7 +52,7 @@ function QuizPlaying() {
 	const [curQuest, setcurQuest] = useState(0);
 	const [showScore, setShowScore] = useState(false);
 	const [score, setScore] = useState(0);
-
+	const [result,setResult] = useState(0);
 	const handleAnswerOptionClick = (isCorrect:boolean) => {
 		if (isCorrect) {
 			setScore(score + 1);
@@ -65,12 +65,17 @@ function QuizPlaying() {
 			setShowScore(true);
 		}
 	};
+	const percentCalculate=(score: number)=>{
+		
+	}
 	return (
+
 		<div className='body'>
+			
 			<div className='app'>
-				{showScore ? (
-					<div className='score-section'>
-						You scored {score} out of {questions.length}
+				{showScore ?(				
+					<div className='score-section'>	
+						Your scores : {(score/questions.length)*100}%						
 					</div>
 				) : (
 					<div className="formContainer">
@@ -78,9 +83,11 @@ function QuizPlaying() {
 							<div className='question-count'>
 								<span>Question {curQuest + 1}</span>/{questions.length}
 							</div>
-							<div className='question-text'>{questions[curQuest].questionText}</div>
+							<div className='questiontextContainer'>
+								<label className='question-text'>{questions[curQuest].questionText}</label>
+							</div>
 						</div>
-						<div className='answer-section'>
+						<div className='answer-section'>				
 							{questions[curQuest].answerOptions.map((answerOption) => (
 								<button className='answersBtn' onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
 							))}

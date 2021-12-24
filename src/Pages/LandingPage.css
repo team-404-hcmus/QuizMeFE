@@ -37,13 +37,13 @@
 }
 .middleLP{
     position: fixed;  
-    width: 65vw;
-    height: 70vh;
+    width: 1197px;
+    height: 706px;
     background-color: rgba(255,255,255,1);
     box-shadow: 11px 4px 15px 9px rgba(0, 0, 0, 0.4);
     border-radius: 10px;
 }
-h1{
+.landingPageH1{
     position: absolute;  
     left:5%;
     top: 8%;
@@ -54,7 +54,7 @@ h1{
     letter-spacing: 0.075em;
 }
 
-h2{
+.landingPageH2{
     position: absolute;
     height: 88px;
     left: 5%;
@@ -68,7 +68,7 @@ h2{
     letter-spacing: 0.26em;
 }
 
-h3{
+.landingPageH3{
     position: absolute;
     width: 540px;
     height: 263px;
