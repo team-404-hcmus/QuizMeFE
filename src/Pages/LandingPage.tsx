@@ -1,4 +1,4 @@
-import { LoginForm,ForgetPassForm } from "Component/FormComponent";
+import { LoginForm,ForgetPassForm } from "Component/LandingForm";
 import React, { useState } from "react";
 import "./LandingPage.css";
 function LandingPage(props:any)

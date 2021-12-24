@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import {LoginForm,ForgetPassForm} from "Component/FormComponent";
 import {LandingPage} from "Pages/LandingPage";
 import {QuizPlaying} from "Pages/QuizPlaying";
 import {HomePage} from "Pages/HomePage";
+import { ProfileForm } from "Component/HomeForm";
+
 function APP(){
 	const [state, setstate] = useState<number>(0);
 	if(state ===0){		

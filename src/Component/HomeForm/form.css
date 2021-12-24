@@ -1,0 +1,11 @@
+.displayField {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 2px solid #000000;
+	box-sizing: border-box;
+	border-radius: 5px;
+    pointer-events: none;
+}
+
