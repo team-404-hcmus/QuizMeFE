@@ -16,8 +16,9 @@ function ProfileForm(props:any) {
 	}
 	return(	
 		<form>		
-			{changePass?<ChangePassForm></ChangePassForm>:null}				
-			<div>															
+						
+			<div>
+				{changePass?<ChangePassForm></ChangePassForm>:null}														
 				<div className='labelContainer'>
 					<label className='label'><b>Profile</b></label>
 				</div>
@@ -54,7 +55,7 @@ function ProfileForm(props:any) {
 
 function ChangePassForm(props:any){
 	return(
-		<form className='joinRoomForm'>
+		<form className='changepassForm'>
 			<div>
 				<div className='labelContainer'>
 					<label className="label"><b>CHANGE</b></label>

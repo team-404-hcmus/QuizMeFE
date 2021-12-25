@@ -36,8 +36,7 @@ function LoginForm(props:any) {
 		<div >	
 			<div className='labelContainer'>
 				<label className='label'><b>Login</b></label>
-			</div>
-			
+			</div>		
 			<div className='container'>
 				<label htmlFor="uname"><b>Username</b></label>
 				<input onChange={e => {setUsername(e.currentTarget.value)}} type="text" placeholder="Enter Username" name="uname" required></input>
@@ -60,7 +59,7 @@ function LoginForm(props:any) {
 }
 function ForgetPassForm(props:any) {
 	return(
-		<form>
+		<form className='forgetpassForm'>
 			<div>	
 				<div className='labelContainer'>
 					<label className="label"><b>FORGOT</b></label>
