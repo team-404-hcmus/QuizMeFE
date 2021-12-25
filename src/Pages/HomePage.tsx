@@ -6,7 +6,7 @@ import { faHome,faUser,faQuestion,
     faArrowCircleLeft,faHandshake } from "@fortawesome/free-solid-svg-icons";
 
 
-function HomePage()
+function HomePage(props:any)
 {
     const [profile, setProfile] = useState(false);
     const [joinroom, setJoinRoom] = useState(false);
@@ -43,6 +43,9 @@ function HomePage()
             overlay.style.display = "none";
         }
     }
+    function backLandingPage(){
+        props.stateFunction(0);
+    };
     return(
         <>
             {profile?<ProfileForm></ProfileForm>:null}
@@ -52,7 +55,8 @@ function HomePage()
             <div className="homepageContainer">
                 <div className="MenuIcon">
                     <div className="leftMenu">
-                        <FontAwesomeIcon className="backIcon" icon={faArrowCircleLeft} size="2x"></FontAwesomeIcon>
+                        <FontAwesomeIcon className="backIcon" icon={faArrowCircleLeft} size="2x"
+                        onClick={backLandingPage}></FontAwesomeIcon>
                     </div>
                     <div className="rightMenu">
                         <FontAwesomeIcon className="rightIcon" icon={faQuestion} size="2x"></FontAwesomeIcon>   

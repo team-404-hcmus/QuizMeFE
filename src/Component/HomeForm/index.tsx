@@ -14,11 +14,10 @@ function ProfileForm(props:any) {
 			return !e;
 		})
 	}
-	return(
-		<form>	
-			{changePass?<ChangePassForm></ChangePassForm>:null}			
-			<div>				
-				
+	return(	
+		<form>		
+			{changePass?<ChangePassForm></ChangePassForm>:null}				
+			<div>															
 				<div className='labelContainer'>
 					<label className='label'><b>Profile</b></label>
 				</div>

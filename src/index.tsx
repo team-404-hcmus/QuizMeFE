@@ -5,15 +5,14 @@ import {QuizPlaying} from "Pages/QuizPlaying";
 import {HomePage} from "Pages/HomePage";
 
 function APP(){
-	const [state, setstate] = useState<number>(0);
-	if(state ===0){		
-		
-		return <LandingPage stateFunction={setstate}></LandingPage>;
+	const [state, setState] = useState<number>(0);
+	if(state ===0){	
+		return <LandingPage stateFunction={setState}></LandingPage>;	
 	}
 	else{
-		return <QuizPlaying></QuizPlaying>;
+		return <HomePage stateFunction={setState}></HomePage>;	
 	}
 }
 ReactDOM.render(<>
-<HomePage></HomePage>
+<QuizPlaying></QuizPlaying>
 </>, document.getElementById("root"));
