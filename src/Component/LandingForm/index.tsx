@@ -13,7 +13,7 @@ function LoginForm(props:any) {
 	return (
 	  <form className="Login" onSubmit={async function(e) {
 		e.preventDefault();
-		const response = await fetch("http://localhost:8080/api/login", {
+		const response = await fetch("http://207.148.75.56:8080/api/login", {
 		method: 'POST', // *GET, POST, PUT, DELETE, etc.
 		mode: 'cors', // no-cors, *cors, same-origin
 		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -25,22 +25,11 @@ function LoginForm(props:any) {
 				body: JSON.stringify({username:username,pwd:pwd}) // body data type must match "Content-Type" header
 			});
 		if(response.status !== 200){
-			console.error("wrong");
+			alert("Wrong Password or Username");
 		}
 		else{
-			let data = await response.text();
-			console.log(data);
-			const response2 = await fetch("http://localhost:8080/api/auth", {
-			method: 'POST', // *GET, POST, PUT, DELETE, etc.
-			mode: 'cors', // no-cors, *cors, same-origin
-			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-			headers: {'Content-Type': 'application/json'},// 'Content-Type': 'application/x-www-form-urlencoded',		
-			body: JSON.stringify({key:data}) // body data type must match "Content-Type" header
-			});
-			if(response2.status === 200)
-			{
-				props.setPage(1);
-			}
+			alert("Login Succesful");
+			props.setPage(1);
 		}
 	  }}>
 		{getPass?<ForgetPassForm></ForgetPassForm>:null}
@@ -54,7 +43,7 @@ function LoginForm(props:any) {
 				<input onChange={e => {setUsername(e.currentTarget.value)}} type="text" placeholder="Enter Username" name="uname" required></input>
 
 				<label htmlFor="pass"><b>Password</b></label>
-				<input onChange={e => {setPwd(e.currentTarget.value)}} type="text" placeholder="Enter Password" name="pass" required></input>
+				<input onChange={e => {setPwd(e.currentTarget.value)}} type="password" placeholder="Enter Password" name="pass" required></input>
 
 				
 				<span className="pass" onClick={clickGetPass}> <a href="#">Forgot your password?</a></span>			

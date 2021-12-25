@@ -46,6 +46,9 @@ function HomePage(props:any)
     function backLandingPage(){
         props.stateFunction(0);
     };
+    function playGame(){
+        props.stateFunction(2);
+    };
     return(
         <>
             {profile?<ProfileForm></ProfileForm>:null}
@@ -59,7 +62,8 @@ function HomePage(props:any)
                         onClick={backLandingPage}></FontAwesomeIcon>
                     </div>
                     <div className="rightMenu">
-                        <FontAwesomeIcon className="rightIcon" icon={faQuestion} size="2x"></FontAwesomeIcon>   
+                        <FontAwesomeIcon className="rightIcon" icon={faQuestion} size="2x"
+                        onClick={playGame}></FontAwesomeIcon>   
                         <FontAwesomeIcon className="rightIcon" icon={faHandshake}size="2x"
                         onClick={clickJoinRoom}></FontAwesomeIcon>
                         <FontAwesomeIcon className="rightIcon"icon={faUser}size="2x"

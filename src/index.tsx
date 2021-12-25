@@ -9,10 +9,13 @@ function APP(){
 	if(state ===0){	
 		return <LandingPage stateFunction={setState}></LandingPage>;	
 	}
-	else{
+	else if(state===1){
 		return <HomePage stateFunction={setState}></HomePage>;	
+	}
+	else{
+		return <QuizPlaying stateFunction={setState}></QuizPlaying>;	
 	}
 }
 ReactDOM.render(<>
-<QuizPlaying></QuizPlaying>
+<APP></APP>
 </>, document.getElementById("root"));

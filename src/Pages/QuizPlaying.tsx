@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import "./QuizPlaying.css";
-function QuizPlaying() {
+function QuizPlaying(props:any) {
 	const questions = [
 		{
 			questionText: 'What is the capital of France?',
