@@ -65,9 +65,9 @@ function QuizPlaying(props:any) {
 			setShowScore(true);
 		}
 	};
-	const percentCalculate=(score: number)=>{
-		
-	}
+	function backHome(){
+        props.stateFunction(1);
+    };
 	return (
 
 		<div className='body'>
@@ -75,10 +75,12 @@ function QuizPlaying(props:any) {
 			<div className='app'>
 				{showScore ?(				
 					<div className='score-section'>	
-						Your scores : {(score/questions.length)*100}%						
+						<b className='scoreDisplay'>Your scores : {(score/questions.length)*100}%</b>
+						<button className='homebackBtn' onClick={backHome}>Back Home</button>							
 					</div>
 				) : (
 					<div className="formContainer">
+						
 						<div className='question-section'>
 							<div className='question-count'>
 								<span>Question {curQuest + 1}</span>/{questions.length}
