@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import {LandingPage} from "Pages/LandingPage";
 import {QuizPlaying} from "Pages/QuizPlaying";
 import {HomePage} from "Pages/HomePage";
-import { ProfileForm } from "Component/HomeForm";
+import { ProfileForm,ChangePassForm } from "Component/HomeForm";
 
 function APP(){
 	const [state, setstate] = useState<number>(0);

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./form.css";
 function ProfileForm(props:any) {
+	const [changePass, setchangePass] = useState(false);
 	const account = 
 		{
 			schoolID:"19127614",
@@ -8,9 +9,16 @@ function ProfileForm(props:any) {
 			dob:"25/12/2001",
 			gender:"Male"
 		}
+	function clickChangePass(){
+		setchangePass( function(e){
+			return !e;
+		})
+	}
 	return(
-		<form>
-			<div >	
+		<form>	
+			{changePass?<ChangePassForm></ChangePassForm>:null}			
+			<div>				
+				
 				<div className='labelContainer'>
 					<label className='label'><b>Profile</b></label>
 				</div>
@@ -35,13 +43,41 @@ function ProfileForm(props:any) {
 					placeholder={account.gender}></input>	
 				</div>
 				
-				<div>
+				<div className='container'>
 					<div className='centerBtn'>
-						<button className="landingBtn">Change Password</button>
+						<button className='landingBtn' type="submit" onClick={clickChangePass}>Change Password</button>
 					</div>	
 				</div>					
 			</div>
 		</form>
 	)
 }
-export{ProfileForm}
+
+function ChangePassForm(props:any){
+	return(
+		<form>
+			<div>
+				<div className='labelContainer'>
+					<label className="label"><b>CHANGE</b></label>
+				</div>
+				<div className='labelContainer'>
+					<label className="label"><b>PASSWORD</b></label>
+				</div>
+				<div className='container'>
+					<label htmlFor="oldPass"><b>Old Password</b></label>
+					<input type="text" placeholder="Enter Your Old Password" name="oldPass" required></input>
+					<label htmlFor="newPass"><b>New Password</b></label>
+					<input type="text" placeholder="Enter Your New Password" name="newPass" required></input>
+					<label htmlFor="confirmPass"><b>Confirm</b></label>
+					<input type="text" placeholder="Confirm Your New Password" name="confirmPass" required></input>		
+				</div>
+				<div className='container'>
+					<div className='centerBtn'>
+						<button className='landingBtn' type="submit">Submit</button>
+					</div>	
+				</div>	
+			</div>
+		</form>
+	)
+}
+export{ProfileForm,ChangePassForm}
