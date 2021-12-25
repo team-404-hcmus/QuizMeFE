@@ -15,8 +15,7 @@ function ProfileForm(props:any) {
 		})
 	}
 	return(	
-		<form>		
-						
+		<form className='profileForm'>								
 			<div>
 				{changePass?<ChangePassForm></ChangePassForm>:null}														
 				<div className='labelContainer'>
@@ -45,7 +44,7 @@ function ProfileForm(props:any) {
 				
 				<div className='container'>
 					<div className='centerBtn'>
-						<button className='landingBtn' type="submit" onClick={clickChangePass}>Change Password</button>
+						<button className='landingBtn' type="button" onClick={clickChangePass}>Change Password</button>
 					</div>	
 				</div>					
 			</div>
@@ -73,7 +72,7 @@ function ChangePassForm(props:any){
 				</div>
 				<div className='container'>
 					<div className='centerBtn'>
-						<button className='landingBtn' type="submit">Submit</button>
+						<button className='landingBtn' type="button">Submit</button>
 					</div>	
 				</div>	
 			</div>

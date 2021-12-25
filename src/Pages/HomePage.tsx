@@ -28,11 +28,11 @@ function HomePage(props:any)
             overlay.style.display = "block";//set overlay background
         }
     }
-    function offOverlay()//tủn off overlay background
+    function offOverlayHomePage()//tủn off overlay background
     {
         if(profile==true)
         {
-            setProfile(false);
+            setProfile(false);       
         }
         if(joinroom==true)
         {
@@ -53,7 +53,7 @@ function HomePage(props:any)
         <>
             {profile?<ProfileForm></ProfileForm>:null}
             {joinroom?<JoinRoomForm></JoinRoomForm>:null}
-            <div id="overlay" onClick={offOverlay}>		
+            <div id="overlay" onClick={offOverlayHomePage}>		
 			</div>
             <div className="homepageContainer">
                 <div className="MenuIcon">

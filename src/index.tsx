@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import {LandingPage} from "Pages/LandingPage";
 import {QuizPlaying} from "Pages/QuizPlaying";
 import {HomePage} from "Pages/HomePage";
-
 function APP(){
 	const [state, setState] = useState<number>(0);
 	if(state ===0){	
