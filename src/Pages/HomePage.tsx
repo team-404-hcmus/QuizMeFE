@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./HomePage.css";
-import { ProfileForm } from "Component/HomeForm";
+import { ProfileForm, JoinRoomForm } from "Component/HomeForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome,faUser,faQuestion,
     faArrowCircleLeft,faHandshake } from "@fortawesome/free-solid-svg-icons";
@@ -9,6 +9,7 @@ import { faHome,faUser,faQuestion,
 function HomePage()
 {
     const [profile, setProfile] = useState(false);
+    const [joinroom, setJoinRoom] = useState(false);
     function clickProfile(){
         setProfile( function(e){
             return !e;
@@ -18,11 +19,25 @@ function HomePage()
             overlay.style.display = "block";//set overlay background
         }
     }
-    function offOverlay()//tủn off overlay background
-    {
-        setProfile( function(e){
+    function clickJoinRoom(){
+        setJoinRoom( function(e){
             return !e;
         })
+        const overlay = document.getElementById('overlay');
+        if (overlay) {
+            overlay.style.display = "block";//set overlay background
+        }
+    }
+    function offOverlay()//tủn off overlay background
+    {
+        if(profile==true)
+        {
+            setProfile(false);
+        }
+        if(joinroom==true)
+        {
+            setJoinRoom(false);
+        }       
         const overlay = document.getElementById('overlay');
         if (overlay) {
             overlay.style.display = "none";
@@ -31,6 +46,7 @@ function HomePage()
     return(
         <>
             {profile?<ProfileForm></ProfileForm>:null}
+            {joinroom?<JoinRoomForm></JoinRoomForm>:null}
             <div id="overlay" onClick={offOverlay}>		
 			</div>
             <div className="homepageContainer">
@@ -40,7 +56,8 @@ function HomePage()
                     </div>
                     <div className="rightMenu">
                         <FontAwesomeIcon className="rightIcon" icon={faQuestion} size="2x"></FontAwesomeIcon>   
-                        <FontAwesomeIcon className="rightIcon" icon={faHandshake}size="2x"></FontAwesomeIcon>
+                        <FontAwesomeIcon className="rightIcon" icon={faHandshake}size="2x"
+                        onClick={clickJoinRoom}></FontAwesomeIcon>
                         <FontAwesomeIcon className="rightIcon"icon={faUser}size="2x"
                         onClick={clickProfile}></FontAwesomeIcon>
                         <FontAwesomeIcon className="rightIcon"icon={faHome}size="2x"></FontAwesomeIcon>     

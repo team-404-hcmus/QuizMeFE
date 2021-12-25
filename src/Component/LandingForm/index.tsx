@@ -9,6 +9,7 @@ function LoginForm(props:any) {
 			return !e;
 		})
 	}
+	
 	return (
 	  <form className="Login" onSubmit={async function(e) {
 		e.preventDefault();

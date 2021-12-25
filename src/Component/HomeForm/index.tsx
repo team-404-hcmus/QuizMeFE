@@ -55,7 +55,7 @@ function ProfileForm(props:any) {
 
 function ChangePassForm(props:any){
 	return(
-		<form>
+		<form className='joinRoomForm'>
 			<div>
 				<div className='labelContainer'>
 					<label className="label"><b>CHANGE</b></label>
@@ -80,4 +80,25 @@ function ChangePassForm(props:any){
 		</form>
 	)
 }
-export{ProfileForm,ChangePassForm}
+
+function JoinRoomForm(props:any){
+	return(
+		<form>
+			<div className='container'>
+				<div className='JRlabelContainer'>
+					<label className='JRlabel'><b>ROOM PIN</b></label>
+				</div>				
+				<div className='container'>
+					<input type="text" placeholder="Enter Room ID" className='roomPin' required></input>							
+				</div>
+				<div className='container'>
+					<div className='joinBtn'>
+						<button className='landingBtn' type="submit">Join</button>
+					</div>	
+				</div>	
+			</div>
+		</form>
+	)
+}
+
+export{ProfileForm,ChangePassForm,JoinRoomForm}
