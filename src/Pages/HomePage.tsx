@@ -3,7 +3,7 @@ import "./HomePage.css";
 import { ProfileForm, JoinRoomForm } from "Component/HomeForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome,faUser,faQuestion,
-    faArrowCircleLeft,faHandshake } from "@fortawesome/free-solid-svg-icons";
+    faArrowCircleLeft,faHandshake, faCaretRight, faSearch } from "@fortawesome/free-solid-svg-icons";
 import internal from "stream";
 
 
@@ -11,20 +11,26 @@ function HomePage(props:any)
 {
     const quizs = [
 		{
-			name: 'Digital Image Processing 1',			
+			name: 'Digital Image Processing 1',	
+            updatedDate: '25/12/2001',		
 		},
 		{
 			name: 'Digital Image Processing 2',
+            updatedDate: '13/12/2001',	
 		},
 		{
-			name: 'Computer Graphic',		
+			name: 'Computer Graphic',
+            updatedDate: '25/12/2001',			
 		},
 		{
 			name: 'Machine Learning',
+            updatedDate: '25/12/2001',	
 		},	
         {
 			name: 'Maths',
+            updatedDate: '25/12/2001',	
 		},	
+        
         	
 	];
     const [profile, setProfile] = useState(false);
@@ -92,22 +98,22 @@ function HomePage(props:any)
         <>
             {profile?<ProfileForm></ProfileForm>:null}
             {joinroom?<JoinRoomForm></JoinRoomForm>:null}
-            <div id="overlay" onClick={offOverlayHomePage}>		
+            <div id='overlay' onClick={offOverlayHomePage}>		
 			</div>
-            <div className="homepageContainer">
-                <div className="MenuIcon">
-                    <div className="leftMenu">
-                        <FontAwesomeIcon className="backIcon" icon={faArrowCircleLeft} size="2x"
+            <div className='homepageContainer'>
+                <div className='MenuIcon'>
+                    <div className='leftMenu'>
+                        <FontAwesomeIcon className='backIcon' icon={faArrowCircleLeft} size="2x"
                         onClick={backLandingPage}></FontAwesomeIcon>
                     </div>
-                    <div className="rightMenu">
-                        <FontAwesomeIcon className="rightIcon" icon={faQuestion} size="2x"
+                    <div className='rightMenu'>
+                        <FontAwesomeIcon className='rightIcon' icon={faQuestion} size="2x"
                         onClick={playGame}></FontAwesomeIcon>   
-                        <FontAwesomeIcon className="rightIcon" icon={faHandshake}size="2x"
+                        <FontAwesomeIcon className='rightIcon' icon={faHandshake}size="2x"
                         onClick={clickJoinRoom}></FontAwesomeIcon>
-                        <FontAwesomeIcon className="rightIcon"icon={faUser}size="2x"
+                        <FontAwesomeIcon className='rightIcon'icon={faUser}size="2x"
                         onClick={clickProfile}></FontAwesomeIcon>
-                        <FontAwesomeIcon className="rightIcon"icon={faHome}size="2x"></FontAwesomeIcon>     
+                        <FontAwesomeIcon className='rightIcon'icon={faHome}size="2x"></FontAwesomeIcon>     
                     </div>      
                 </div> 
                 <div id='HomeScreen'>
@@ -118,8 +124,11 @@ function HomePage(props:any)
                     </div>
                     <div className='quizsDisplay'>
                         {quizs.map((quizname)=>(
-                            <div className="quizContainer">
+                            <div className='quizContainer'>
                                  <p className='quizName'>{quizname.name}</p>
+                                 <p className='quizUpdateDate'>{quizname.updatedDate}</p>
+                                 <FontAwesomeIcon className='playIcon'icon={faCaretRight}size="5x"
+                                 onClick={playGame}></FontAwesomeIcon> 
                             </div>                      
                         ))}
                     </div>

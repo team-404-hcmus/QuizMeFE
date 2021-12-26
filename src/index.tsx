@@ -16,5 +16,5 @@ function APP(){
 	}
 }
 ReactDOM.render(<>
-<HomePage></HomePage>
+<APP></APP>
 </>, document.getElementById("root"));
