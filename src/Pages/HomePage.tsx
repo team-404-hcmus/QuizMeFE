@@ -76,11 +76,13 @@ function HomePage(props:any)
         props.stateFunction(2);
     };
     function changeScreen(){
-         if(selection ===1 )
-                    {
-                        return <p>HEllo</p>;
-                    }
-                    return (<div id='SelectQuizScreen'>
+        if(selection ===1 )
+        {
+            return(<div id='HomeScreen'></div>)
+        }
+        else
+        {
+            return (<div id='SelectQuizScreen'>
                     <div className='searchBarContainer'>
                         <input type="text" placeholder="Search by topic..." id='searchBar'></input>
                     </div>
@@ -95,7 +97,7 @@ function HomePage(props:any)
                         ))}
                     </div>                    
                 </div> );
-
+        }
     }
     return(
         <>
@@ -111,16 +113,14 @@ function HomePage(props:any)
                     </div>
                     <div className='rightMenu'>
                         <FontAwesomeIcon className='rightIcon' icon={faQuestion} size="2x"
-                        onClick={playGame}></FontAwesomeIcon>   
+                        onClick={(e)=>{
+                            setSelection(0);
+                        }}></FontAwesomeIcon>   
                         <FontAwesomeIcon className='rightIcon' icon={faHandshake}size="2x"
                         onClick={clickJoinRoom}></FontAwesomeIcon>
                         <FontAwesomeIcon className='rightIcon'icon={faUser}size="2x"
                         onClick={clickProfile}></FontAwesomeIcon>
-                         <FontAwesomeIcon className='rightIcon'icon={faQuestion}size="2x"
-                        onClick={(e)=>{
-                            setSelection(0);
-                        }}></FontAwesomeIcon>
-
+                         
                         <FontAwesomeIcon onClick={(e)=>{
                             setSelection(1);
                         }} className='rightIcon'icon={faHome}size="2x"></FontAwesomeIcon>     
