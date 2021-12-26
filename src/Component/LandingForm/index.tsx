@@ -1,5 +1,6 @@
 import "./form.css";
 import React, { useState } from "react";
+import { userData ,setUserData} from "Hooks/ContextProvider";
 function LoginForm(props:any) {
 	const [getPass, setgetPass] = useState(false);
 	const [username,setUsername] = useState("");
@@ -29,6 +30,19 @@ function LoginForm(props:any) {
 		}
 		else{
 			alert("Login Succesful");
+			const response = await fetch("http://localhost:8080/api/getInfo", {
+			method: 'POST', // *GET, POST, PUT, DELETE, etc.
+			mode: 'cors', // no-cors, *cors, same-origin
+			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+			headers: {
+			'Content-Type': 'application/json'
+			// 'Content-Type': 'application/x-www-form-urlencoded',
+			},
+
+					body: JSON.stringify({username:username}) // body data type must match "Content-Type" header
+			});
+			if(response.status === 200)
+				setUserData(await response.json());
 			props.setPage(1);
 		}
 	  }}>

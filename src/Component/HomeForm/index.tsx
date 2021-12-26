@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import { userData } from "Hooks/ContextProvider";
+import React, { useContext, useState } from "react";
 import "./form.css";
 function ProfileForm(props:any) {
 	const [changePass, setchangePass] = useState(false);
-	const account = 
-		{
-			schoolID:"19127614",
-			fullname:"Nguyen Anh Tuan",
-			dob:"25/12/2001",
-			gender:"Male"
-		}
+	// const account = 
+	// 	{
+	// 		schoolID:"19127614",
+	// 		fullname:"Nguyen Anh Tuan",
+	// 		dob:"25/12/2001",
+	// 		gender:"Male"
+	// 	}
 	function clickChangePass(){
 		setchangePass( function(e){
 			return !e;
@@ -25,21 +26,21 @@ function ProfileForm(props:any) {
 				<div className='container'>
 					<label htmlFor='idDisplay' className='labelDisplay'><b>School ID</b></label>
 					<input className='displayField' name='idDisplay'
-					placeholder={account.schoolID}
+					placeholder={userData.schoolID}
 					></input>	
 
 					<label htmlFor='nameDisplay' className='labelDisplay'><b>Full Name</b></label>
 					<input className='displayField' name='nameDisplay'
-					placeholder={account.fullname}
+					placeholder={userData.fullname}
 					></input>
 
 					<label htmlFor='DoBDisplay' className='labelDisplay' ><b>DoB</b></label>				
 					<input className='displayField' name='DoBDisplay'
-					placeholder={account.dob}></input>		
+					placeholder={userData.dob}></input>		
 
 					<label htmlFor='genderDisplay' className='labelDisplay'><b>Gender</b></label>		
 					<input className='displayField' name='genderDisplay'
-					placeholder={account.gender}></input>	
+					placeholder={userData.gender}></input>	
 				</div>
 				
 				<div className='container'>
@@ -101,3 +102,7 @@ function JoinRoomForm(props:any){
 }
 
 export{ProfileForm,ChangePassForm,JoinRoomForm}
+
+function useEffect(arg0: () => void, arg1: any[]) {
+	throw new Error("Function not implemented.");
+}
