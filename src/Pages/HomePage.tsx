@@ -35,6 +35,7 @@ function HomePage(props:any)
 	];
     const [profile, setProfile] = useState(false);
     const [joinroom, setJoinRoom] = useState(false);
+    const [selection, setSelection] = useState(1);
     function clickProfile(){
         setProfile( function(e){
             return !e;
@@ -74,25 +75,27 @@ function HomePage(props:any)
     function playGame(){
         props.stateFunction(2);
     };
-    function changeScreen(selection:number){
-        const homeScreen=document.getElementById('HomeScreen');
-        const selectQuizScreen= document.getElementById('SelectQuizScreen')
-        if(selection==1){
-            if(homeScreen){
-                homeScreen.style.display="block";
-            }   
-            if(selectQuizScreen) {
-                selectQuizScreen.style.display="none";
-            }  
-        }
-        else{
-            if(homeScreen){
-                homeScreen.style.display="none";
-            }   
-            if(selectQuizScreen) {
-                selectQuizScreen.style.display="block";
-            }  
-        }
+    function changeScreen(){
+         if(selection ===1 )
+                    {
+                        return <p>HEllo</p>;
+                    }
+                    return (<div id='SelectQuizScreen'>
+                    <div className='searchBarContainer'>
+                        <input type="text" placeholder="Search by topic..." id='searchBar'></input>
+                    </div>
+                    <div className='quizsDisplay'>
+                        {quizs.map((quizname)=>(
+                            <div className='quizContainer'>
+                                 <p className='quizName'>{quizname.name}</p>
+                                 <p className='quizUpdateDate'>{quizname.updatedDate}</p>
+                                 <FontAwesomeIcon className='playIcon'icon={faCaretRight}size="5x"
+                                 onClick={playGame}></FontAwesomeIcon> 
+                            </div>                      
+                        ))}
+                    </div>                    
+                </div> );
+
     }
     return(
         <>
@@ -113,27 +116,18 @@ function HomePage(props:any)
                         onClick={clickJoinRoom}></FontAwesomeIcon>
                         <FontAwesomeIcon className='rightIcon'icon={faUser}size="2x"
                         onClick={clickProfile}></FontAwesomeIcon>
-                        <FontAwesomeIcon className='rightIcon'icon={faHome}size="2x"></FontAwesomeIcon>     
+                         <FontAwesomeIcon className='rightIcon'icon={faQuestion}size="2x"
+                        onClick={(e)=>{
+                            setSelection(0);
+                        }}></FontAwesomeIcon>
+
+                        <FontAwesomeIcon onClick={(e)=>{
+                            setSelection(1);
+                        }} className='rightIcon'icon={faHome}size="2x"></FontAwesomeIcon>     
                     </div>      
                 </div> 
-                <div id='HomeScreen'>
-                </div> 
-                <div id='SelectQuizScreen'>
-                    <div className='searchBarContainer'>
-                        <input type="text" placeholder="Search by topic..." id='searchBar'></input>
-                    </div>
-                    <div className='quizsDisplay'>
-                        {quizs.map((quizname)=>(
-                            <div className='quizContainer'>
-                                 <p className='quizName'>{quizname.name}</p>
-                                 <p className='quizUpdateDate'>{quizname.updatedDate}</p>
-                                 <FontAwesomeIcon className='playIcon'icon={faCaretRight}size="5x"
-                                 onClick={playGame}></FontAwesomeIcon> 
-                            </div>                      
-                        ))}
-                    </div>
-                    
-                </div>      
+                {changeScreen()}
+                     
             </div>
         </>
         
