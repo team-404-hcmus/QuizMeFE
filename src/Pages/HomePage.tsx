@@ -4,10 +4,29 @@ import { ProfileForm, JoinRoomForm } from "Component/HomeForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome,faUser,faQuestion,
     faArrowCircleLeft,faHandshake } from "@fortawesome/free-solid-svg-icons";
+import internal from "stream";
 
 
 function HomePage(props:any)
 {
+    const quizs = [
+		{
+			name: 'Digital Image Processing 1',			
+		},
+		{
+			name: 'Digital Image Processing 2',
+		},
+		{
+			name: 'Computer Graphic',		
+		},
+		{
+			name: 'Machine Learning',
+		},	
+        {
+			name: 'Maths',
+		},	
+        	
+	];
     const [profile, setProfile] = useState(false);
     const [joinroom, setJoinRoom] = useState(false);
     function clickProfile(){
@@ -49,6 +68,26 @@ function HomePage(props:any)
     function playGame(){
         props.stateFunction(2);
     };
+    function changeScreen(selection:number){
+        const homeScreen=document.getElementById('HomeScreen');
+        const selectQuizScreen= document.getElementById('SelectQuizScreen')
+        if(selection==1){
+            if(homeScreen){
+                homeScreen.style.display="block";
+            }   
+            if(selectQuizScreen) {
+                selectQuizScreen.style.display="none";
+            }  
+        }
+        else{
+            if(homeScreen){
+                homeScreen.style.display="none";
+            }   
+            if(selectQuizScreen) {
+                selectQuizScreen.style.display="block";
+            }  
+        }
+    }
     return(
         <>
             {profile?<ProfileForm></ProfileForm>:null}
@@ -70,7 +109,22 @@ function HomePage(props:any)
                         onClick={clickProfile}></FontAwesomeIcon>
                         <FontAwesomeIcon className="rightIcon"icon={faHome}size="2x"></FontAwesomeIcon>     
                     </div>      
-                </div>        
+                </div> 
+                <div id='HomeScreen'>
+                </div> 
+                <div id='SelectQuizScreen'>
+                    <div className='searchBarContainer'>
+                        <input type="text" placeholder="Search by topic..." id='searchBar'></input>
+                    </div>
+                    <div className='quizsDisplay'>
+                        {quizs.map((quizname)=>(
+                            <div className="quizContainer">
+                                 <p className='quizName'>{quizname.name}</p>
+                            </div>                      
+                        ))}
+                    </div>
+                    
+                </div>      
             </div>
         </>
         
