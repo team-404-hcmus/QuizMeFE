@@ -9,12 +9,10 @@ function APP(){
 	if(state ===0){	
 		return <LandingPage stateFunction={setState}></LandingPage>;	
 	}
-	else if(state===1){
+	else{
 		return <HomePage stateFunction={setState}></HomePage>;	
 	}
-	else{
-		return <QuizPlaying stateFunction={setState}></QuizPlaying>;	
-	}
+
 }
 
 ReactDOM.render(<>
