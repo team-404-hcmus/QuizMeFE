@@ -3,38 +3,15 @@ import "./HomePage.css";
 import { ProfileForm, JoinRoomForm } from "Component/HomeForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome,faUser,faQuestion,
-    faArrowCircleLeft,faHandshake, faCaretRight, faSearch } from "@fortawesome/free-solid-svg-icons";
+    faArrowCircleLeft,faHandshake, faCaretRight, faPlus  } from "@fortawesome/free-solid-svg-icons";
 import { Question, QuizPlaying } from "./QuizPlaying";
 
 
 function HomePage(props:any)
 {
-    // const quizs = [
-	// 	{
-	// 		name: 'Digital Image Processing 1',	
-    //         updatedDate: '25/12/2001',		
-	// 	},
-	// 	{
-	// 		name: 'Digital Image Processing 2',
-    //         updatedDate: '13/12/2001',	
-	// 	},
-	// 	{
-	// 		name: 'Computer Graphic',
-    //         updatedDate: '25/12/2001',			
-	// 	},
-	// 	{
-	// 		name: 'Machine Learning',
-    //         updatedDate: '25/12/2001',	
-	// 	},	
-    //     {
-	// 		name: 'Maths',
-    //         updatedDate: '25/12/2001',	
-	// 	},	
-        
-        	
-	// ];
+    
     useEffect(() => {
-        fetch("http://localhost:8080/api/Question", {
+        fetch("http://207.148.75.56:8080/api/Question", {
 			method: 'POST', // *GET, POST, PUT, DELETE, etc.
 			mode: 'cors', // no-cors, *cors, same-origin
 			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -96,7 +73,7 @@ function HomePage(props:any)
         props.stateFunction(0);
     };
     function playGame(id:string){
-        fetch("http://localhost:8080/api/Question", {
+        fetch("http://207.148.75.56:8080/api/Question", {
 			method: 'POST', // *GET, POST, PUT, DELETE, etc.
 			mode: 'cors', // no-cors, *cors, same-origin
 			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -114,6 +91,75 @@ function HomePage(props:any)
                     }
             })
     };
+    //Search Bar Function----
+    const [filteredData, setFilteredData] = useState([]);
+    const [wordEntered, setWordEntered] = useState("");
+    const handleTagInput=(e:any)=>{
+        const searchWord=e.target.value
+        setWordEntered(searchWord);
+        const newFilter = quizs.filter((value:any) => {
+            return value.name.toLowerCase().includes(searchWord.toLowerCase());
+          });
+        setFilteredData(newFilter);
+        if (searchWord === "") {
+            setFilteredData([]);
+          } 
+        else {
+            setFilteredData(newFilter);
+        }
+    };
+    //--- Searching Question
+    function searchBar()
+    {
+        if(wordEntered.length == 0 )
+        {
+            return (<div id='SelectQuizScreen'>
+                    <div className='searchBarContainer'>                                       
+                        <input type="text" placeholder="Search by topic..." id='searchBar'  value={wordEntered}
+                        onChange={handleTagInput}></input>
+                    </div>
+                    <div className='quizsDisplay'>                                    
+                        {
+                            filteredData?quizs.reverse().map((quizname:any)=>(                               
+                                <div key={quizname._id} className='quizContainer'>                                      
+                                    <p className='quizName'>{quizname.name}</p>
+                                    <p className='quizUpdateDate'>{quizname?.updatedDate ?? "not found"}</p>
+                                    <FontAwesomeIcon className='playIcon'icon={faCaretRight}size="5x"
+                                    onClick={() => playGame(quizname._id)}></FontAwesomeIcon> 
+                                </div>                      
+                            )):null
+                        }
+                    </div>                    
+                </div> );
+        }
+        else
+        {
+            return (<div id='SelectQuizScreen'>
+                    <div className='searchBarContainer'>
+                        <input type="text" placeholder="Search by topic..." id='searchBar'  value={wordEntered}
+                        onChange={handleTagInput}></input>
+                    </div>
+                    <div className='quizsDisplay'>               
+                        {
+                            filteredData?filteredData.reverse().map((quizname:any)=>(
+                                <div key={quizname._id} className='quizContainer'>
+                                    <p className='quizName'>{quizname.name}</p>
+                                    <p className='quizUpdateDate'>{quizname?.updatedDate ?? "not found"}</p>
+                                    <FontAwesomeIcon className='playIcon'icon={faCaretRight}size="5x"
+                                    onClick={() => playGame(quizname._id)}></FontAwesomeIcon> 
+                                </div>                      
+                            )):null
+                        }
+                    </div>                    
+                </div> );
+        }
+    }
+    //---------------
+    //---Add quiz
+    function addQuizBtnClick(){
+        alert("Only For Teachers")
+    }
+    //---------------
     function changeScreen(){
         if(selection ===1 )
         {
@@ -121,21 +167,8 @@ function HomePage(props:any)
         }
         else
         {
-            return (<div id='SelectQuizScreen'>
-                    <div className='searchBarContainer'>
-                        <input type="text" placeholder="Search by topic..." id='searchBar'></input>
-                    </div>
-                    <div className='quizsDisplay'>
-                        {quizs?quizs.map((quizname:any)=>(
-                            <div key={quizname._id} className='quizContainer'>
-                                 <p className='quizName'>{quizname.name}</p>
-                                 <p className='quizUpdateDate'>{quizname?.updatedDate ?? "not found"}</p>
-                                 <FontAwesomeIcon className='playIcon'icon={faCaretRight}size="5x"
-                                 onClick={() => playGame(quizname._id)}></FontAwesomeIcon> 
-                            </div>                      
-                        )):null}
-                    </div>                    
-                </div> );
+            
+            return (searchBar());
         }
     }
     if(!Playing)
@@ -151,19 +184,24 @@ function HomePage(props:any)
                         <FontAwesomeIcon className='backIcon' icon={faArrowCircleLeft} size="2x"
                         onClick={backLandingPage}></FontAwesomeIcon>
                     </div>
-                    <div className='rightMenu'>
+                    <div className='rightMenu'>  
+                        <FontAwesomeIcon className='rightIcon'icon={faPlus}size="2x"
+                        onClick={addQuizBtnClick}></FontAwesomeIcon>    
+
                         <FontAwesomeIcon className='rightIcon' icon={faQuestion} size="2x"
                         onClick={(e)=>{
                             setSelection(0);
-                        }}></FontAwesomeIcon>   
+                        }}></FontAwesomeIcon> 
+
                         <FontAwesomeIcon className='rightIcon' icon={faHandshake}size="2x"
                         onClick={clickJoinRoom}></FontAwesomeIcon>
+
                         <FontAwesomeIcon className='rightIcon'icon={faUser}size="2x"
                         onClick={clickProfile}></FontAwesomeIcon>
                          
                         <FontAwesomeIcon onClick={(e)=>{
                             setSelection(1);
-                        }} className='rightIcon'icon={faHome}size="2x"></FontAwesomeIcon>     
+                        }} className='rightIcon'icon={faHome}size="2x"></FontAwesomeIcon>   
                     </div>      
                 </div> 
                 {changeScreen()}

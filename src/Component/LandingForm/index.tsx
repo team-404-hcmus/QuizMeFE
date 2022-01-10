@@ -30,7 +30,7 @@ function LoginForm(props:any) {
 		}
 		else{
 			alert("Login Succesful");
-			const response = await fetch("http://localhost:8080/api/getInfo", {
+			const response = await fetch("http://207.148.75.56:8080/api/getInfo", {
 			method: 'POST', // *GET, POST, PUT, DELETE, etc.
 			mode: 'cors', // no-cors, *cors, same-origin
 			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
