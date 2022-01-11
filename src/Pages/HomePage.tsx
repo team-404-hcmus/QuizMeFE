@@ -100,7 +100,6 @@ function HomePage(props:any)
         const newFilter = quizs.filter((value:any) => {
             return value.name.toLowerCase().includes(searchWord.toLowerCase());
           });
-        setFilteredData(newFilter);
         if (searchWord === "") {
             setFilteredData([]);
           } 
@@ -120,7 +119,7 @@ function HomePage(props:any)
                     </div>
                     <div className='quizsDisplay'>                                    
                         {
-                            filteredData?quizs.reverse().map((quizname:any)=>(                               
+                            quizs?quizs.reverse().map((quizname:any)=>(                               
                                 <div key={quizname._id} className='quizContainer'>                                      
                                     <p className='quizName'>{quizname.name}</p>
                                     <p className='quizUpdateDate'>{quizname?.updatedDate ?? "not found"}</p>
@@ -157,7 +156,9 @@ function HomePage(props:any)
     //---------------
     //---Add quiz
     function addQuizBtnClick(){
-        alert("Only For Teachers")
+        alert(
+            "Only For Teachers"
+        )
     }
     //---------------
     function changeScreen(){

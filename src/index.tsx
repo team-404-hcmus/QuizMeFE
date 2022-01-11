@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import {LandingPage} from "Pages/LandingPage";
 import {QuizPlaying} from "Pages/QuizPlaying";
 import {HomePage} from "Pages/HomePage";
+import {AdminPage} from "Pages/AdminPage";
 import { userData } from "Hooks/ContextProvider";
 function APP(){
 	const [state, setState] = useState<number>(0);
@@ -16,7 +17,7 @@ function APP(){
 }
 
 ReactDOM.render(<>
-<APP></APP>
+<AdminPage></AdminPage>
 </>, document.getElementById("root"));
 
 function useContext(data: React.Context<any>) {

@@ -1,0 +1,51 @@
+.accountTable {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+    
+table {
+    border: 1px solid black;
+    width: auto;
+    height: auto;
+}
+    
+th {
+    border: 1px solid black;
+    font-size: large;
+}
+    
+td {
+    border: 1px  solid black;
+    text-align: center;
+}
+#IDColumn,#NameColumn,#AgeColumn,#GenderColumn{
+    font-size: large;
+    width: 100%;	
+    height: 100%;
+	display: inline-block;
+    border:hidden;
+    text-align: left;
+}
+#IDColumn:focus,#NameColumn:focus,#AgeColumn:focus,#GenderColumn{
+    outline:none;
+}
+
+.tableName{
+    height:50px;
+}
+
+#addAccbtn
+{   
+    cursor: pointer;
+    position: relative;
+    left:35%;
+}
+#deleteAccbtn
+{
+    cursor: pointer;
+    position: relative;
+    left:38%;
+}
