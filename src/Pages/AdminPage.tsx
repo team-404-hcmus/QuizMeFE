@@ -12,6 +12,7 @@ function AdminPage(props:any){
         dob: "", 
         gender: "" 
     })
+    //thêm account
     function handleAddAccountChange(event:any){
        event.preventDefault();
        const fieldName = event.target.getAttribute('name');
@@ -35,7 +36,13 @@ function AdminPage(props:any){
     
         const newAccounts = [...accounts, newAcc];
         setAccounts(newAccounts);
-      };
+    };
+    // xóa account
+    function handleRemove(username:any) {
+        const newAccounts = accounts.filter((item) => item.username !== username);
+    
+        setAccounts(newAccounts);
+    }
     function StudentTable(){ 
         return(  
             <div className='accountTable'>
@@ -65,7 +72,8 @@ function AdminPage(props:any){
                                 <td>
                                     <div id="actionBtnContainer" >
                                         <FontAwesomeIcon className='actionBtn' icon={faEdit}></FontAwesomeIcon> 
-                                        <FontAwesomeIcon className='actionBtn' icon={faMinus}></FontAwesomeIcon>  
+                                        <FontAwesomeIcon className='actionBtn' icon={faMinus}
+                                        onClick={()=>handleRemove(val.username)}></FontAwesomeIcon>  
                                     </div>                                 
                                 </td>                     
                             </tr>
@@ -98,7 +106,7 @@ function AdminPage(props:any){
                             </td>
                             <td>
                                 <div id="actionBtnContainer" >                                  
-                                    <FontAwesomeIcon className='actionBtn' icon={faPlus} type="submit"
+                                    <FontAwesomeIcon className='actionBtn' icon={faPlus} 
                                     onClick={handleAddAccountSubmit}></FontAwesomeIcon>                                      
                                 </div>                                 
                             </td>   
