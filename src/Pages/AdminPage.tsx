@@ -1,16 +1,41 @@
 import React, { Component, useState } from 'react'
 import "./AdminPage.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import myData from './data.json';
 import {  faPlus,faMinus,faEdit  } from "@fortawesome/free-solid-svg-icons";
 function AdminPage(props:any){
-    const data=[
-        { username:"19127614",fullname: "Tuan", dob: "25/12/2001", gender: "Male" },
-        { username:"19127615",fullname: "Vu", dob: "25/12/2001", gender: "Female" },
-        { username:"19127616",fullname: "Huy", dob: "25/12/2001", gender: "Male"},
-        { username:"19127617",fullname: "Thien", dob: "25/12/2001", gender: "Male"},
-        { username:"19127618",fullname: "Phat", dob: "25/12/2001", gender: "Male"},
-    ]
-   
+    const [accounts, setAccounts] = useState(myData);
+    const [addNewAccount, setAddNewAccount] = useState({
+        username:"",
+        password:"1",
+        fullname: "", 
+        dob: "", 
+        gender: "" 
+    })
+    function handleAddAccountChange(event:any){
+       event.preventDefault();
+       const fieldName = event.target.getAttribute('name');
+       const fieldValue =event.target.value;
+
+       const newAccountData:any={...addNewAccount};
+       newAccountData[fieldName]=fieldValue;
+       setAddNewAccount(newAccountData);
+       console.log(addNewAccount);
+    }
+    const handleAddAccountSubmit = (event:any) => {
+        event.preventDefault();
+    
+        const newAcc = {
+            username: addNewAccount.username,
+            password: addNewAccount.password,
+            fullname: addNewAccount.fullname,
+            dob: addNewAccount.dob,
+            gender: addNewAccount.gender
+        };
+    
+        const newAccounts = [...accounts, newAcc];
+        setAccounts(newAccounts);
+      };
     function StudentTable(){ 
         return(  
             <div className='accountTable'>
@@ -24,24 +49,19 @@ function AdminPage(props:any){
                         <tr className="headerRow">
                             <th className="columnName">SCHOOL ID</th>
                             <th className="columnName">NAME</th>
-                            <th className="columnName">AGE</th>
+                            <th className="columnName">DOB</th>
                             <th className="columnName">GENDER</th>
                             <th className="columnName">ACTIONS</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {data.reverse().slice(0,data.length).map((val:any, key:any) => {
+                        {accounts.reverse().slice(0,accounts.length).map((val:any, key:any) => {
                         return (
                             <tr className='bodyRow'>
-                                <td><input id="IDColumn" type="text" defaultValue={val.username}/></td>
-                                <td><input id="NameColumn" type="text" defaultValue={val.fullname}/></td>
-                                <td><input id="AgeColumn" type="text" defaultValue={val.dob}/></td>                     
-                                <td>
-                                    <select id="GenderColumn" defaultValue={val.gender} >
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                    </select>
-                                </td>  
+                                <td>{val.username}</td>
+                                <td>{val.fullname}</td>
+                                <td>{val.dob}</td>                     
+                                <td>{val.gender}</td>  
                                 <td>
                                     <div id="actionBtnContainer" >
                                         <FontAwesomeIcon className='actionBtn' icon={faEdit}></FontAwesomeIcon> 
@@ -53,6 +73,37 @@ function AdminPage(props:any){
                         }
                         )}
                     </tbody>
+                    <thead>
+                        <tr className="tableName">                     
+                            <th colSpan={5}>                       
+                                ADD ACOUNTS                                                                          
+                            </th>
+                        </tr>
+                        <tr className="bodyRow">
+                            <td> 
+                                <input id="accColumn" type="text" name="username" placeholder='Input School ID' required
+                                onChange={handleAddAccountChange}/>
+                            </td>
+                            <td> 
+                                <input id="accColumn" type="text" name="fullname" placeholder='Input Full Name' required
+                                 onChange={handleAddAccountChange}/>
+                            </td>
+                            <td> 
+                                <input id="accColumn" type="text" name="dob" placeholder='Input DoB' required
+                                 onChange={handleAddAccountChange}/>
+                            </td>
+                            <td> 
+                                <input id="accColumn" type="text" name="gender" placeholder='Input Gender' required
+                                 onChange={handleAddAccountChange}/>
+                            </td>
+                            <td>
+                                <div id="actionBtnContainer" >                                  
+                                    <FontAwesomeIcon className='actionBtn' icon={faPlus} type="submit"
+                                    onClick={handleAddAccountSubmit}></FontAwesomeIcon>                                      
+                                </div>                                 
+                            </td>   
+                        </tr>                 
+                    </thead>
                 </table>
             </div>
         )

@@ -8,7 +8,7 @@
     
 table {
     border: 1px solid black;
-    width: auto;
+    width: 800px;
     height: auto;
 }
     
@@ -21,31 +21,22 @@ td {
     border: 1px  solid black;
     text-align: center;
 }
-#IDColumn,#NameColumn,#AgeColumn,#GenderColumn{
+#accColumn{
     font-size: large;
     width: 100%;	
     height: 100%;
 	display: inline-block;
     border:hidden;
     text-align: left;
-}
-#IDColumn:focus,#NameColumn:focus,#AgeColumn:focus,#GenderColumn{
     outline:none;
 }
-
 .tableName{
     height:50px;
 }
 
-#addAccbtn
+.actionBtn
 {   
+    margin:10px;
     cursor: pointer;
     position: relative;
-    left:35%;
-}
-#deleteAccbtn
-{
-    cursor: pointer;
-    position: relative;
-    left:38%;
 }

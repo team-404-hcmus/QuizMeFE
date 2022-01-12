@@ -1,0 +1,7 @@
+[
+    { "username":"19127614","password":"1","fullname": "Tuan", "dob": "25/12/2001", "gender": "Male" },
+    { "username":"19127615","password":"1","fullname": "Vu", "dob": "25/12/2001", "gender": "Female" },
+    { "username":"19127616","password":"1","fullname": "Huy", "dob": "25/12/2001", "gender": "Male"},
+    { "username":"19127617","password":"1","fullname": "Thien", "dob": "25/12/2001", "gender": "Male"},
+    { "username":"19127619","password":"1","fullname": "Phat", "dob": "25/12/2001", "gender": "Male"}
+]
