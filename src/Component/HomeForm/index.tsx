@@ -26,7 +26,7 @@ function ProfileForm(props:any) {
 				<div className='container'>
 					<label htmlFor='idDisplay' className='labelDisplay'><b>School ID</b></label>
 					<input className='displayField' name='idDisplay'
-					placeholder={userData.schoolID}
+					placeholder={userData.username}
 					></input>	
 
 					<label htmlFor='nameDisplay' className='labelDisplay'><b>Full Name</b></label>

@@ -1,52 +1,66 @@
 import React, { Component, useState } from 'react'
 import "./AdminPage.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {  faPlus,faMinus  } from "@fortawesome/free-solid-svg-icons";
-const data = [
-    { id:19127614,name: "Tuan", age: 19, gender: "Male" },
-    { id:19127615,name: "Vu", age: 19, gender: "Female" },
-    { id:19127616,name: "Huy", age: 25, gender: "Male"},
-    { id:19127617,name: "Thien", age: 20, gender: "Male"},
-    { id:19127618,name: "Phat", age: 20, gender: "Male"},
-  ]
-function AdminPage(){
-    return(
-        <div className='accountTable'>
-            <table>
-                <thead>
-                    <tr className="tableName">                     
-                        <th colSpan={4}>                       
-                            ACCOUNT INFO                           
-                            <FontAwesomeIcon className='tableBtn' id='addAccbtn'  icon={faPlus}></FontAwesomeIcon> 
-                            <FontAwesomeIcon className='tableBtn' id='deleteAccbtn'icon={faMinus}></FontAwesomeIcon>                         
-                        </th>
-                    </tr>
-                    <tr className="headerRow">
-                        <th className="columnName">SCHOOL ID</th>
-                        <th className="columnName">NAME</th>
-                        <th className="columnName">AGE</th>
-                        <th className="columnName">Gender</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {data.slice(0,data.length).map((val, key) => {
-                    return (
-                        <tr className='bodyRow' key={key}>
-                            <td><input id="IDColumn" type="text" defaultValue={val.id}/></td>
-                            <td><input id="NameColumn" type="text" defaultValue={val.name}/></td>
-                            <td><input id="AgeColumn" type="text" defaultValue={val.age}/></td>                     
-                            <td>
-                                <select id="GenderColumn" defaultValue={val.gender}>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                </select>
-                            </td>                       
+import {  faPlus,faMinus,faEdit  } from "@fortawesome/free-solid-svg-icons";
+function AdminPage(props:any){
+    const data=[
+        { username:"19127614",fullname: "Tuan", dob: "25/12/2001", gender: "Male" },
+        { username:"19127615",fullname: "Vu", dob: "25/12/2001", gender: "Female" },
+        { username:"19127616",fullname: "Huy", dob: "25/12/2001", gender: "Male"},
+        { username:"19127617",fullname: "Thien", dob: "25/12/2001", gender: "Male"},
+        { username:"19127618",fullname: "Phat", dob: "25/12/2001", gender: "Male"},
+    ]
+   
+    function StudentTable(){ 
+        return(  
+            <div className='accountTable'>
+                <table>
+                    <thead>
+                        <tr className="tableName">                     
+                            <th colSpan={5}>                       
+                                STUDENTS INFO                                                                               
+                            </th>
                         </tr>
-                    )
-                    })}
-                </tbody>
-            </table>
-    </div>
+                        <tr className="headerRow">
+                            <th className="columnName">SCHOOL ID</th>
+                            <th className="columnName">NAME</th>
+                            <th className="columnName">AGE</th>
+                            <th className="columnName">GENDER</th>
+                            <th className="columnName">ACTIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {data.reverse().slice(0,data.length).map((val:any, key:any) => {
+                        return (
+                            <tr className='bodyRow'>
+                                <td><input id="IDColumn" type="text" defaultValue={val.username}/></td>
+                                <td><input id="NameColumn" type="text" defaultValue={val.fullname}/></td>
+                                <td><input id="AgeColumn" type="text" defaultValue={val.dob}/></td>                     
+                                <td>
+                                    <select id="GenderColumn" defaultValue={val.gender} >
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                </td>  
+                                <td>
+                                    <div id="actionBtnContainer" >
+                                        <FontAwesomeIcon className='actionBtn' icon={faEdit}></FontAwesomeIcon> 
+                                        <FontAwesomeIcon className='actionBtn' icon={faMinus}></FontAwesomeIcon>  
+                                    </div>                                 
+                                </td>                     
+                            </tr>
+                            )    
+                        }
+                        )}
+                    </tbody>
+                </table>
+            </div>
+        )
+    }
+    return(
+        <>
+            {StudentTable()}
+        </>
     )
 }
 export{AdminPage}

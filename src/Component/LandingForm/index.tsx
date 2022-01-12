@@ -1,6 +1,6 @@
 import "./form.css";
 import React, { useState } from "react";
-import { userData ,setUserData} from "Hooks/ContextProvider";
+import { userData ,setUserData, currentIP} from "Hooks/ContextProvider";
 function LoginForm(props:any) {
 	const [getPass, setgetPass] = useState(false);
 	const [username,setUsername] = useState("");
@@ -14,7 +14,7 @@ function LoginForm(props:any) {
 	return (
 	  <form className="Login" onSubmit={async function(e) {
 		e.preventDefault();
-		const response = await fetch("http://207.148.75.56:8080/api/login", {
+		const response = await fetch(`http://${currentIP}:8080/api/login`, {
 		method: 'POST', // *GET, POST, PUT, DELETE, etc.
 		mode: 'cors', // no-cors, *cors, same-origin
 		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -30,7 +30,7 @@ function LoginForm(props:any) {
 		}
 		else{
 			alert("Login Succesful");
-			const response = await fetch("http://207.148.75.56:8080/api/getInfo", {
+			const response = await fetch(`http://${currentIP}:8080/api/getInfo`, {
 			method: 'POST', // *GET, POST, PUT, DELETE, etc.
 			mode: 'cors', // no-cors, *cors, same-origin
 			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -43,7 +43,15 @@ function LoginForm(props:any) {
 			});
 			if(response.status === 200)
 				setUserData(await response.json());
-			props.setPage(1);
+			console.log(userData);
+			if(userData.role==="admin")
+			{				
+				props.setPage(1);
+			}
+			else{
+				props.setPage(2);
+			}
+			
 		}
 	  }}>
 		{getPass?<ForgetPassForm></ForgetPassForm>:null}
@@ -56,9 +64,7 @@ function LoginForm(props:any) {
 				<input onChange={e => {setUsername(e.currentTarget.value)}} type="text" placeholder="Enter Username" name="uname" required></input>
 
 				<label htmlFor="pass"><b>Password</b></label>
-				<input onChange={e => {setPwd(e.currentTarget.value)}} type="password" placeholder="Enter Password" name="pass" required></input>
-
-				
+				<input onChange={e => {setPwd(e.currentTarget.value)}} type="password" placeholder="Enter Password" name="pass" required></input>				
 				<span className="pass" onClick={clickGetPass}> <a href="#">Forgot your password?</a></span>			
 			</div>
 			

@@ -10,6 +10,10 @@ function APP(){
 	if(state ===0){	
 		return <LandingPage stateFunction={setState}></LandingPage>;	
 	}
+	else if(state ===1)
+	{
+		return <AdminPage stateFunction={setState}></AdminPage>;	
+	}
 	else{
 		return <HomePage stateFunction={setState}></HomePage>;	
 	}

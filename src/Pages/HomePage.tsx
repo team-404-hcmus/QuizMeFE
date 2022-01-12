@@ -5,13 +5,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome,faUser,faQuestion,
     faArrowCircleLeft,faHandshake, faCaretRight, faPlus  } from "@fortawesome/free-solid-svg-icons";
 import { Question, QuizPlaying } from "./QuizPlaying";
-
+import { userData ,setUserData, currentIP} from "Hooks/ContextProvider";
 
 function HomePage(props:any)
 {
     
     useEffect(() => {
-        fetch("http://207.148.75.56:8080/api/Question", {
+        fetch(`http://${currentIP}:8080/api/Question`, {
 			method: 'POST', // *GET, POST, PUT, DELETE, etc.
 			mode: 'cors', // no-cors, *cors, same-origin
 			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -73,7 +73,7 @@ function HomePage(props:any)
         props.stateFunction(0);
     };
     function playGame(id:string){
-        fetch("http://207.148.75.56:8080/api/Question", {
+        fetch(`http://${currentIP}:8080/api/Question`, {
 			method: 'POST', // *GET, POST, PUT, DELETE, etc.
 			mode: 'cors', // no-cors, *cors, same-origin
 			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
