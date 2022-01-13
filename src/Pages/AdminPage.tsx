@@ -64,7 +64,7 @@ function AdminPage(props:any){
     
         setEditedAccount(newAcc);
       };
-      function handleEditAccountChange(event:any){
+    function handleEditAccountChange(event:any){
         event.preventDefault();
         const fieldName = event.target.getAttribute('name');
         const fieldValue =event.target.value;
@@ -72,7 +72,10 @@ function AdminPage(props:any){
         const newAccountData:any={...editedAccount};
         newAccountData[fieldName]=fieldValue;
         setEditedAccount(newAccountData);
-     }
+    }
+    function handleCancelClick(){
+        setEditAccountId(null);
+    }
     function StudentTable(){ 
         return(  
             <div className='accountTable'>
@@ -118,7 +121,7 @@ function AdminPage(props:any){
                                                 <FontAwesomeIcon className='actionBtn' icon={faCheck}
                                                 ></FontAwesomeIcon> 
                                                 <FontAwesomeIcon className='actionBtn' icon={faWindowClose}
-                                                ></FontAwesomeIcon>  
+                                                onClick={handleCancelClick}></FontAwesomeIcon>  
                                             </div>                                 
                                         </td>                     
                                     </tr>
