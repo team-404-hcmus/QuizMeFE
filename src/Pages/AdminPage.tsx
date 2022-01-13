@@ -12,6 +12,14 @@ function AdminPage(props:any){
         dob: "", 
         gender: "" 
     })
+    const [editedAccount, setEditedAccount] = useState({
+        username:"",
+        password:"",
+        fullname: "", 
+        dob: "", 
+        gender: "" 
+    })
+    const [editAccounttId, setEditAccountId] = useState(null);
     //thêm account
     function handleAddAccountChange(event:any){
        event.preventDefault();
@@ -25,7 +33,6 @@ function AdminPage(props:any){
     }
     const handleAddAccountSubmit = (event:any) => {
         event.preventDefault();
-    
         const newAcc = {
             username: addNewAccount.username,
             password: addNewAccount.password,
@@ -43,6 +50,21 @@ function AdminPage(props:any){
     
         setAccounts(newAccounts);
     }
+    //chỉnh sửa account
+    const handleEditClick = (event:any, account:any) => {
+        event.preventDefault();
+        setEditAccountId(account.username);
+    
+        const newAcc = {
+            username: addNewAccount.username,
+            password: addNewAccount.password,
+            fullname: addNewAccount.fullname,
+            dob: addNewAccount.dob,
+            gender: addNewAccount.gender
+        };
+    
+        setEditedAccount(newAcc);
+      };
     function StudentTable(){ 
         return(  
             <div className='accountTable'>
@@ -71,7 +93,8 @@ function AdminPage(props:any){
                                 <td>{val.gender}</td>  
                                 <td>
                                     <div id="actionBtnContainer" >
-                                        <FontAwesomeIcon className='actionBtn' icon={faEdit}></FontAwesomeIcon> 
+                                        <FontAwesomeIcon className='actionBtn' icon={faEdit}
+                                        onClick={(event)=>handleEditClick(event,val)}></FontAwesomeIcon> 
                                         <FontAwesomeIcon className='actionBtn' icon={faMinus}
                                         onClick={()=>handleRemove(val.username)}></FontAwesomeIcon>  
                                     </div>                                 
