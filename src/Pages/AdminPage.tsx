@@ -81,14 +81,12 @@ function AdminPage(props:any){
             fullname: editedAccount.fullname,
             dob: editedAccount.dob,
             gender: editedAccount.gender
-        };
-    
+        }; 
         const newAccounts = [...accounts];
         const index = accounts.findIndex((accounts) => accounts.username === editAccounttId);
         newAccounts[index] = newAcc;
         setAccounts(newAccounts);
         setEditAccountId(null);
-        console.log(newAcc.username)
     };
     function handleCancelClick(){
         setEditAccountId(null);
@@ -117,10 +115,7 @@ function AdminPage(props:any){
                             {editAccounttId===val.username ?
                                 (                          
                                     <tr className='bodyRow' key={key}>
-                                        <td> 
-                                            <input id="accColumn" type="text" name="username" placeholder='Input School ID' required
-                                            onChange={handleEditAccountChange}/>
-                                        </td>
+                                        <td>{val.username}</td>
                                         <td> 
                                             <input id="accColumn" type="text" name="fullname" placeholder='Input Full Name' required
                                             onChange={handleEditAccountChange}/>
