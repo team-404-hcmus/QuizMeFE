@@ -55,11 +55,11 @@ function AdminPage(props:any){
         setEditAccountId(account.username);
     
         const newAcc = {
-            username: addNewAccount.username,
-            password: addNewAccount.password,
-            fullname: addNewAccount.fullname,
-            dob: addNewAccount.dob,
-            gender: addNewAccount.gender
+            username: editedAccount.username,
+            password: editedAccount.password,
+            fullname: editedAccount.fullname,
+            dob: editedAccount.dob,
+            gender: editedAccount.gender
         };
     
         setEditedAccount(newAcc);
@@ -73,6 +73,23 @@ function AdminPage(props:any){
         newAccountData[fieldName]=fieldValue;
         setEditedAccount(newAccountData);
     }
+    const handleEditAccountSubmit = (event:any) => {
+        event.preventDefault();
+        const newAcc = {
+            username: editedAccount.username,
+            password: editedAccount.password,
+            fullname: editedAccount.fullname,
+            dob: editedAccount.dob,
+            gender: editedAccount.gender
+        };
+    
+        const newAccounts = [...accounts];
+        const index = accounts.findIndex((accounts) => accounts.username === editAccounttId);
+        newAccounts[index] = newAcc;
+        setAccounts(newAccounts);
+        setEditAccountId(null);
+        console.log(newAcc.username)
+    };
     function handleCancelClick(){
         setEditAccountId(null);
     }
@@ -99,27 +116,27 @@ function AdminPage(props:any){
                         <Fragment>
                             {editAccounttId===val.username ?
                                 (                          
-                                    <tr className='bodyRow'>
+                                    <tr className='bodyRow' key={key}>
                                         <td> 
                                             <input id="accColumn" type="text" name="username" placeholder='Input School ID' required
-                                            onChange={handleAddAccountChange}/>
+                                            onChange={handleEditAccountChange}/>
                                         </td>
                                         <td> 
                                             <input id="accColumn" type="text" name="fullname" placeholder='Input Full Name' required
-                                            onChange={handleAddAccountChange}/>
+                                            onChange={handleEditAccountChange}/>
                                         </td>
                                         <td> 
                                             <input id="accColumn" type="text" name="dob" placeholder='Input DoB' required
-                                            onChange={handleAddAccountChange}/>
+                                            onChange={handleEditAccountChange}/>
                                         </td>
                                         <td> 
                                             <input id="accColumn" type="text" name="gender" placeholder='Input Gender' required
-                                            onChange={handleAddAccountChange}/>
+                                            onChange={handleEditAccountChange}/>
                                         </td>
                                         <td>
                                             <div id="actionBtnContainer" >
                                                 <FontAwesomeIcon className='actionBtn' icon={faCheck}
-                                                ></FontAwesomeIcon> 
+                                                onClick={handleEditAccountSubmit}></FontAwesomeIcon> 
                                                 <FontAwesomeIcon className='actionBtn' icon={faWindowClose}
                                                 onClick={handleCancelClick}></FontAwesomeIcon>  
                                             </div>                                 
@@ -127,7 +144,7 @@ function AdminPage(props:any){
                                     </tr>
                                 ) :
                                 (
-                                    <tr className='bodyRow'>
+                                    <tr className='bodyRow'key={key}>
                                         <td>{val.username}</td>
                                         <td>{val.fullname}</td>
                                         <td>{val.dob}</td>                     
