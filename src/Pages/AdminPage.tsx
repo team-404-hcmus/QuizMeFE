@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import myData from './data.json';
 import {  faPlus,faMinus,faEdit,faCheck,faWindowClose  } from "@fortawesome/free-solid-svg-icons";
 function AdminPage(props:any){
-    const [accounts, setAccounts] = useState(myData);
+    const [accounts, setAccounts] = useState(myData );
     const [addNewAccount, setAddNewAccount] = useState({
         username:"",
         password:"1",
@@ -55,7 +55,7 @@ function AdminPage(props:any){
         setEditAccountId(account.username);
     
         const newAcc = {
-            username: editedAccount.username,
+            username: account.username,
             password: editedAccount.password,
             fullname: editedAccount.fullname,
             dob: editedAccount.dob,
@@ -91,7 +91,7 @@ function AdminPage(props:any){
     function handleCancelClick(){
         setEditAccountId(null);
     }
-    function StudentTable(){ 
+    function StudentTable(studentData:any){ 
         return(  
             <div className='accountTable'>
                 <table>
@@ -110,7 +110,7 @@ function AdminPage(props:any){
                         </tr>
                     </thead>
                     <tbody>
-                        {accounts.slice(0,accounts.length).map((val:any, key:any) => (
+                        {studentData.slice(0,accounts.length).map((val:any, key:any) => (
                         <Fragment>
                             {editAccounttId===val.username ?
                                 (                          
@@ -193,9 +193,18 @@ function AdminPage(props:any){
             </div>
         )
     }
+    const [action, setAction] = useState(false);
+    function ViewStudent(){
+        setAction( function(e){       
+			return !e;
+		})
+    }
     return(
         <>
-            {StudentTable()}
+            {action==true?StudentTable(accounts):null} 
+            <div>
+                <button className="LoginButton" onClick={ViewStudent}>Students Account</button>
+            </div>          
         </>
     )
 }
