@@ -2,7 +2,7 @@ import React, { Component, Fragment, useState } from 'react'
 import "./AdminPage.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import myData from './data.json';
-import {  faPlus,faMinus,faEdit,faCheck,faWindowClose  } from "@fortawesome/free-solid-svg-icons";
+import {  faPlus,faMinus,faEdit,faCheck,faWindowClose, faSave } from "@fortawesome/free-solid-svg-icons";
 function AdminPage(props:any){
     const [accounts, setAccounts] = useState(myData );
     const [addNewAccount, setAddNewAccount] = useState({
@@ -98,7 +98,9 @@ function AdminPage(props:any){
                     <thead>
                         <tr className="tableName">                     
                             <th colSpan={5}>                       
-                                STUDENTS INFO                                                                               
+                                STUDENTS INFO  
+                                <FontAwesomeIcon className='accountSaveBtn' icon={faSave}
+                                ></FontAwesomeIcon>                                                                               
                             </th>
                         </tr>
                         <tr className="headerRow">

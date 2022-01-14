@@ -40,3 +40,7 @@ td {
     cursor: pointer;
     position: relative;
 }
+.accountSaveBtn{
+    position: relative;
+    left: 35%;
+}
