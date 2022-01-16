@@ -6,6 +6,6 @@ function setUserData(data:any){
 
 }
 const ProductionIp = "207.148.75.56";
-const TestIP = "1.53.142.197";
-const currentIP = ProductionIp;
+const TestIP = "118.71.237.164";
+const currentIP = TestIP;
 export{userData,setUserData,currentIP};

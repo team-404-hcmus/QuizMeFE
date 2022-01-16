@@ -1,20 +1,38 @@
-import React, { Component, Fragment, useState } from 'react'
+import React, { Component, Fragment, useEffect, useState } from 'react'
 import "./AdminPage.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import myData from './data.json';
 import {  faPlus,faMinus,faEdit,faCheck,faWindowClose, faSave } from "@fortawesome/free-solid-svg-icons";
+import { currentIP, userData } from 'Hooks/ContextProvider';
 function AdminPage(props:any){
-    const [accounts, setAccounts] = useState(myData );
+    const [accounts, setAccounts] = useState([]as any[]);
+    useEffect(() => {
+        fetch(`http://${currentIP}:8080/api/getAllUser`, {
+		method: 'POST', // *GET, POST, PUT, DELETE, etc.
+		mode: 'cors', // no-cors, *cors, same-origin
+		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+		headers: {
+		'Content-Type': 'application/json'
+		},body: JSON.stringify({"key":userData.loginKey})
+        }).then(respone=>{
+            respone.json().then((v:any) =>{
+                setAccounts(v);
+            })
+        })
+        return () => {
+            
+        }
+    }, [])
     const [addNewAccount, setAddNewAccount] = useState({
         username:"",
-        password:"1",
+        pwd:"1",
         fullname: "", 
         dob: "", 
         gender: "" 
     })
     const [editedAccount, setEditedAccount] = useState({
         username:"",
-        password:"",
+        pwd:"",
         fullname: "", 
         dob: "", 
         gender: "" 
@@ -30,18 +48,30 @@ function AdminPage(props:any){
        newAccountData[fieldName]=fieldValue;
        setAddNewAccount(newAccountData);
     }
-    const handleAddAccountSubmit = (event:any) => {
+    async function handleAddAccountSubmit(event:any){
         event.preventDefault();
         const newAcc = {
             username: addNewAccount.username,
-            password: addNewAccount.password,
+            pwd: addNewAccount.pwd,
             fullname: addNewAccount.fullname,
             dob: addNewAccount.dob,
-            gender: addNewAccount.gender
+            gender: addNewAccount.gender,
+            role:"student"
         };
-    
-        const newAccounts = [...accounts, newAcc];
-        setAccounts(newAccounts);
+        const response = await fetch(`http://${currentIP}:8080/api/CreateUser`, {
+		method: 'POST', // *GET, POST, PUT, DELETE, etc.
+		mode: 'cors', // no-cors, *cors, same-origin
+		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+		headers: {
+		'Content-Type': 'application/json'
+		},body: JSON.stringify({...newAcc,"key":userData.loginKey})
+        }); 
+        if(response.status === 200)
+        {
+            setAccounts((value:any[])=>{
+                return [...value, newAcc]
+            })
+        }
     };
     // xóa account
     function handleRemove(username:any) {
@@ -56,7 +86,7 @@ function AdminPage(props:any){
     
         const newAcc = {
             username: account.username,
-            password: editedAccount.password,
+            pwd: editedAccount.pwd,
             fullname: editedAccount.fullname,
             dob: editedAccount.dob,
             gender: editedAccount.gender
@@ -77,7 +107,7 @@ function AdminPage(props:any){
         event.preventDefault();
         const newAcc = {
             username: editedAccount.username,
-            password: editedAccount.password,
+            pwd: editedAccount.pwd,
             fullname: editedAccount.fullname,
             dob: editedAccount.dob,
             gender: editedAccount.gender

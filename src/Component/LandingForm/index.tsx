@@ -30,7 +30,7 @@ function LoginForm(props:any) {
 		}
 		else{
 			alert("Login Succesful");
-			const response = await fetch(`http://${currentIP}:8080/api/getInfo`, {
+			const response1 = await fetch(`http://${currentIP}:8080/api/getInfo`, {
 			method: 'POST', // *GET, POST, PUT, DELETE, etc.
 			mode: 'cors', // no-cors, *cors, same-origin
 			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -42,7 +42,7 @@ function LoginForm(props:any) {
 					body: JSON.stringify({username:username}) // body data type must match "Content-Type" header
 			});
 			if(response.status === 200)
-				setUserData(await response.json());
+				setUserData(await response1.json());
 			console.log(userData);
 			if(userData.role==="admin")
 			{				
