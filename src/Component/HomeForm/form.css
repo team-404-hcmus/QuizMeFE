@@ -31,10 +31,21 @@
 	top: 200px;
 	border-radius: 5px;
 }
-.joinBtn{
+.joinBtn,.addQuizBtn{
 	padding: 10px 21px;
 	position: absolute;
 	left: 35%;
 	top: 279px;
+}
+.addQuestionBtn
+{
+	padding-bottom: 10px;
+	position: relative;
+	left: 40%;
+
+}
+.AddQuizForm{
+	height: 65%;
+	width:  20%;
 }
 

@@ -1,5 +1,6 @@
 import { userData } from "Hooks/ContextProvider";
 import React, { useContext, useState } from "react";
+import { Form } from "react-bootstrap";
 import "./form.css";
 function ProfileForm(props:any) {
 	const[changePass, setchangePass] = useState(false);
@@ -79,6 +80,7 @@ function ChangePassForm(props:any){
 			alert("Please fulfill the information")
 			return;
 		}
+
 	}
 	return(
 		<form className='changepassForm'>
@@ -129,8 +131,78 @@ function JoinRoomForm(props:any){
 		</form>
 	)
 }
-
-export{ProfileForm,ChangePassForm,JoinRoomForm}
+function AddQuizForm(props:any){
+	const[addStage, setAddStage] = useState(0);
+	const[quizName, setQuizName] = useState("");
+	const[numberQuestion, setNumberQuestion] = useState(0);
+	function HandleQuizNameChange(event:any){
+        event.preventDefault();
+        setQuizName(event.target.value)
+    }
+	function SetQuizNameClick(){
+		setAddStage(1)
+	}
+	function AddQuestionClick(){
+		setNumberQuestion(numberQuestion+1)
+	}
+	if(addStage==0)
+	{
+		return(
+			<form>
+				<div className='labelContainer'>
+						<label className="label"><b>ADD QUIZ</b></label>
+				</div>	
+				<div className='container'>
+					<input type="text" placeholder="Enter Quiz Name" className='roomPin' required
+					onChange={HandleQuizNameChange}></input>							
+				</div>
+				<div className='container'>
+					<div className='addQuizBtn'>
+						<button className='landingBtn' type="button" onClick={SetQuizNameClick}>Next</button>
+					</div>	
+				</div>	
+			</form>
+		)
+	}
+	else{
+		return(
+			<form className="AddQuizForm">
+				<div className='labelContainer'>
+						<label className="label"><b>{quizName}</b></label>
+				</div>					
+					
+				<div className='container'>
+					<p>Question Number: {numberQuestion}</p>	
+					<input type="text" required placeholder="Input Question"/>
+					<input type="text" required className="ans1" placeholder="Answer 1"/>
+					<select className="ans1">
+						<option value="true">True</option>
+						<option value="false">False</option>
+					</select>
+					<input type="text" required className="ans2" placeholder="Answer 2"/>
+					<select className="ans2">
+						<option value="true">True</option>
+						<option value="false">False</option>
+					</select>
+					<input type="text" required className="ans3" placeholder="Answer 3"/>
+					<select className="ans3">
+						<option value="true">True</option>
+						<option value="false">False</option>
+					</select>
+					<input type="text" required className="ans4" placeholder="Answer 4"/>
+					<select className="ans4">
+						<option value="true">True</option>
+						<option value="false">False</option>
+					</select>
+					<div className='addQuestionBtn'>
+						<button className='landingBtn' type="button" onClick={AddQuestionClick} >Add</button>
+					</div>	
+				</div>
+			</form>
+		)
+	}
+}
+export{ProfileForm,ChangePassForm,JoinRoomForm,AddQuizForm}
 
 function useEffect(arg0: () => void, arg1: any[]) {
 	throw new Error("Function not implemented.");

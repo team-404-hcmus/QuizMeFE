@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from "react";
 import "./HomePage.css";
-import { ProfileForm, JoinRoomForm } from "Component/HomeForm";
+import { ProfileForm, JoinRoomForm,AddQuizForm } from "Component/HomeForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome,faUser,faQuestion,
     faArrowCircleLeft,faHandshake, faCaretRight, faPlus  } from "@fortawesome/free-solid-svg-icons";
@@ -33,6 +33,7 @@ function HomePage(props:any)
     const [quizs,setQuiz] = useState<any>(null);
     const [profile, setProfile] = useState(false);
     const [joinroom, setJoinRoom] = useState(false);
+    const [addQuizForm, setAddQuizForm] = useState(false);
     const [selection, setSelection] = useState(1);
 
     const [Playing, setPlaying] = useState<null|Question[]>(null);
@@ -53,7 +54,16 @@ function HomePage(props:any)
         if (overlay) {
             overlay.style.display = "block";//set overlay background
         }
-    }
+    } 
+    function addQuizBtnClick(){
+        setAddQuizForm( function(e){
+            return !e;
+        })
+        const overlay = document.getElementById('overlay');
+        if (overlay) {
+            overlay.style.display = "block";//set overlay background
+        }
+    } 
     function offOverlayHomePage()//tủn off overlay background
     {
         if(profile===true)
@@ -63,6 +73,10 @@ function HomePage(props:any)
         if(joinroom===true)
         {
             setJoinRoom(false);
+        }    
+        if(addQuizForm===true)
+        {
+            setAddQuizForm(false);
         }       
         const overlay = document.getElementById('overlay');
         if (overlay) {
@@ -154,12 +168,7 @@ function HomePage(props:any)
         }
     }
     //---------------
-    //---Add quiz
-    function addQuizBtnClick(){
-        alert(
-            "Only For Teachers"
-        )
-    }
+    
     //---------------
     function changeScreen(){
         if(selection ===1 )
@@ -175,10 +184,11 @@ function HomePage(props:any)
     if(!Playing)
     return(
         <>
-        {profile?<ProfileForm></ProfileForm>:null}
-        {joinroom?<JoinRoomForm></JoinRoomForm>:null}
+            {profile?<ProfileForm></ProfileForm>:null}
+            {joinroom?<JoinRoomForm></JoinRoomForm>:null}
+            {addQuizForm?<AddQuizForm></AddQuizForm>:null}
             <div id='overlay' onClick={offOverlayHomePage}>		
-			</div>
+			</div>  
             <div className='homepageContainer'>
                 <div className='MenuIcon'>
                     <div className='leftMenu'>

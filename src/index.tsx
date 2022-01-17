@@ -21,7 +21,7 @@ function APP(){
 }
 
 ReactDOM.render(<>
-<APP></APP>
+<HomePage></HomePage>
 </>, document.getElementById("root"));
 
 function useContext(data: React.Context<any>) {
