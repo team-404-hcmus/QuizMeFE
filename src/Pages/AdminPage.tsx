@@ -74,9 +74,20 @@ function AdminPage(props:any){
         }
     };
     // xóa account
-    function handleRemove(username:any) {
+    async function handleRemove(username:any) {
         const newAccounts = accounts.filter((item) => item.username !== username);
-    
+        const response = await fetch(`http://${currentIP}:8080/api/DeleteUser`, {
+		method: 'POST', // *GET, POST, PUT, DELETE, etc.
+		mode: 'cors', // no-cors, *cors, same-origin
+		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+		headers: {
+		'Content-Type': 'application/json'
+		},body: JSON.stringify({username,"key":userData.loginKey})
+        }); 
+        if(response.status === 200)
+        {
+            setAccounts(newAccounts);
+        }
         setAccounts(newAccounts);
     }
     //chỉnh sửa account
