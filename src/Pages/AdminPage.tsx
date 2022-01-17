@@ -97,7 +97,7 @@ function AdminPage(props:any){
     
         const newAcc = {
             username: account.username,
-            pwd: editedAccount.pwd,
+            pwd: account.pwd,
             fullname: editedAccount.fullname,
             dob: editedAccount.dob,
             gender: editedAccount.gender
