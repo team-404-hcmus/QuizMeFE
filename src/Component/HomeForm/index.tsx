@@ -113,6 +113,9 @@ function ChangePassForm(props:any){
 }
 
 function JoinRoomForm(props:any){
+	function JoinRoomBtnClick(){
+		alert("room does not exist")
+	}
 	return(
 		<form>
 			<div className='container'>
@@ -124,7 +127,7 @@ function JoinRoomForm(props:any){
 				</div>
 				<div className='container'>
 					<div className='joinBtn'>
-						<button className='landingBtn' type="submit">Join</button>
+						<button className='landingBtn' type="submit" onClick={JoinRoomBtnClick}>Join</button>
 					</div>	
 				</div>	
 			</div>
