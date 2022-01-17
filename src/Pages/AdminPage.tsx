@@ -103,7 +103,7 @@ function AdminPage(props:any){
         newAccountData[fieldName]=fieldValue;
         setEditedAccount(newAccountData);
     }
-    const handleEditAccountSubmit = (event:any) => {
+    async function handleEditAccountSubmit(event:any){
         event.preventDefault();
         const newAcc = {
             username: editedAccount.username,
@@ -112,11 +112,22 @@ function AdminPage(props:any){
             dob: editedAccount.dob,
             gender: editedAccount.gender
         }; 
-        const newAccounts = [...accounts];
-        const index = accounts.findIndex((accounts) => accounts.username === editAccounttId);
-        newAccounts[index] = newAcc;
-        setAccounts(newAccounts);
-        setEditAccountId(null);
+        const response = await fetch(`http://${currentIP}:8080/api/CreateUser`, {
+		method: 'POST', // *GET, POST, PUT, DELETE, etc.
+		mode: 'cors', // no-cors, *cors, same-origin
+		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+		headers: {
+		'Content-Type': 'application/json'
+		},body: JSON.stringify({...newAcc,"key":userData.loginKey})
+        }); 
+        if(response.status === 200)
+        {
+            const newAccounts = [...accounts];
+            const index = accounts.findIndex((accounts) => accounts.username === editAccounttId);
+            newAccounts[index] = newAcc;
+            setAccounts(newAccounts);
+            setEditAccountId(null);
+        }
     };
     function handleCancelClick(){
         setEditAccountId(null);

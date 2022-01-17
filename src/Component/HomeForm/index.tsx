@@ -57,6 +57,7 @@ function ChangePassForm(props:any){
 	const[oldPwd, setOldPwd] = useState("");
 	const[newPwd, setNewPwd] = useState("");
 	const[confirmPwd, setConfirmPwd] = useState("");
+	const[quiz, setQuiz] = useState("");
 	function handleOldPwdChange(event:any){
         event.preventDefault();
         setOldPwd(event.target.value)

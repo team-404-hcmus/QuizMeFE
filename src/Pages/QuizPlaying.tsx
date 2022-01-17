@@ -8,7 +8,7 @@ export interface Question{
             questionText: string,
             answerOptions: answer[]
 }
-interface QuizPlayingProps{
+export interface QuizPlayingProps{
 	stateFunction:any
 	question: Question[],
 	[key:string]:unknown
