@@ -2,7 +2,7 @@ import React, { Component, Fragment, useEffect, useState } from 'react'
 import "./AdminPage.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import myData from './data.json';
-import {  faPlus,faMinus,faEdit,faCheck,faWindowClose, faSave } from "@fortawesome/free-solid-svg-icons";
+import {  faPlus,faMinus,faEdit,faCheck,faWindowClose, faSave,faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
 import { currentIP, userData } from 'Hooks/ContextProvider';
 function AdminPage(props:any){
     const [accounts, setAccounts] = useState([]as any[]);
@@ -151,8 +151,7 @@ function AdminPage(props:any){
                         <tr className="tableName">                     
                             <th colSpan={5}>                       
                                 STUDENTS INFO  
-                                <FontAwesomeIcon className='accountSaveBtn' icon={faSave}
-                                ></FontAwesomeIcon>                                                                               
+                                                                                                           
                             </th>
                         </tr>
                         <tr className="headerRow">
@@ -253,12 +252,19 @@ function AdminPage(props:any){
 			return !e;
 		})
     }
+    function backLandingPage(){
+        props.stateFunction(0);
+    };
     return(
-        <>
-            {action==true?StudentTable(accounts):null} 
-            <div>
-                <button className="LoginButton" onClick={ViewStudent}>Students Account</button>
-            </div>          
+        <>        
+            <div className='MenuIcon'>
+                <div className='leftMenu'>
+                        <FontAwesomeIcon className='backIcon' icon={faArrowCircleLeft} size="2x"
+                        onClick={backLandingPage}></FontAwesomeIcon>
+                </div>                
+            </div>
+            {StudentTable(accounts)}
+                 
         </>
     )
 }

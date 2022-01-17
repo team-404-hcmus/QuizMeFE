@@ -2,6 +2,7 @@ import { currentIP,userData } from "Hooks/ContextProvider";
 import React, { useContext, useState } from "react";
 import { Form } from "react-bootstrap";
 import "./form.css";
+import { Question} from "Pages/QuizPlaying";
 function ProfileForm(props:any) {
 	const[changePass, setchangePass] = useState(false);
 	// const account = 
@@ -57,7 +58,6 @@ function ChangePassForm(props:any){
 	const[oldPwd, setOldPwd] = useState("");
 	const[newPwd, setNewPwd] = useState("");
 	const[confirmPwd, setConfirmPwd] = useState("");
-	const[quiz, setQuiz] = useState("");
 	function handleOldPwdChange(event:any){
         event.preventDefault();
         setOldPwd(event.target.value)
@@ -149,10 +149,15 @@ function JoinRoomForm(props:any){
 		</form>
 	)
 }
-function AddQuizForm(props:any){
+interface NewQuiz{
+	name:any
+	question: Question[],
+}
+function AddQuizForm(props:any){ 
 	const[addStage, setAddStage] = useState(0);
 	const[quizName, setQuizName] = useState("");
 	const[numberQuestion, setNumberQuestion] = useState(0);
+	const[quizQuestion, setQuizQuestion] = useState([] as Question[]);
 	function HandleQuizNameChange(event:any){
         event.preventDefault();
         setQuizName(event.target.value)
