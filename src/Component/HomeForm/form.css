@@ -37,15 +37,41 @@
 	left: 35%;
 	top: 279px;
 }
+.AddQuizForm{
+	height: 55%;
+	width:  25%;
+}
 .addQuestionBtn
 {
-
 	position: relative;
-	left: 32%;
+	left: 20%;
+}
+.quizFormBtn{
+	background-color: #FFCB91;
+	color: white;
+	font-weight: bold;
+	padding: 14px 20px;
+	margin-top:8%;
+	margin-right: 28%;
+	border:none;
+	cursor: pointer;
+	border-radius: 5px;
+}
+#ans1,#ans2,#ans3,#ans4{
+	width: 75%;
+	margin-right: 7%;
+	font-size: 16px;
+}
+#isCorrect1,#isCorrect2,#isCorrect3,#isCorrect4{
+	width: 18%;
+	font-size: 16px;
+}
+.questCount,#questionName{
+	font-weight: bold;
+	font-size: 16px;
+}
+#questionName{
+	text-align: center;  
+}
 
-}
-.AddQuizForm{
-	height: 65%;
-	width:  20%;
-}
 

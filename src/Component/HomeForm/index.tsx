@@ -177,31 +177,31 @@ function AddQuizForm(props:any){
 				</div>					
 					
 				<div className='container'>
-					<p>Question Number: {numberQuestion}</p>	
-					<input type="text" required placeholder="Input Question"/>
-					<input type="text" required className="ans1" placeholder="Answer 1"/>
-					<select className="ans1">
+					<p className="questCount">QUESTION NUMBER: {numberQuestion}</p>	
+					<input type="text" required id="questionName" placeholder="Input Question"/>
+					<input type="text" required id="ans1" placeholder="Answer 1"/>
+					<select id="isCorrect1">
 						<option value="true">True</option>
 						<option value="false">False</option>
 					</select>
-					<input type="text" required className="ans2" placeholder="Answer 2"/>
-					<select className="ans2">
+					<input type="text" required id="ans2" placeholder="Answer 2"/>
+					<select id="isCorrect2">
 						<option value="true">True</option>
 						<option value="false">False</option>
 					</select>
-					<input type="text" required className="ans3" placeholder="Answer 3"/>
-					<select className="ans3">
+					<input type="text" required id="ans3" placeholder="Answer 3"/>
+					<select id="isCorrect3">
 						<option value="true">True</option>
 						<option value="false">False</option>
 					</select>
-					<input type="text" required className="ans4" placeholder="Answer 4"/>
-					<select className="ans4">
+					<input type="text" required id="ans4" placeholder="Answer 4"/>
+					<select id="isCorrect4">
 						<option value="true">True</option>
 						<option value="false">False</option>
 					</select>
 					<div className='addQuestionBtn'>
-						<button className='landingBtn' type="button" onClick={AddQuestionClick} >Add</button>	
-						<button className='landingBtn' type="button" onClick={DoneClick} >Done</button>					
+						<button className='quizFormBtn' type="button" onClick={AddQuestionClick} >Add</button>	
+						<button className='quizFormBtn' type="button" onClick={DoneClick} >Done</button>					
 					</div>	
 				</div>
 			</form>
@@ -211,7 +211,7 @@ function AddQuizForm(props:any){
 		return(
 			<form>
 				<div className='labelContainer'>
-							<label className="label"><b>Add Quiz Successfully</b></label>
+						<label className="label"><b>Add Quiz Successfully</b></label>
 				</div>	
 			</form>
 		)
