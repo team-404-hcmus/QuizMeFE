@@ -112,7 +112,7 @@ function AdminPage(props:any){
             dob: editedAccount.dob,
             gender: editedAccount.gender
         }; 
-        const response = await fetch(`http://${currentIP}:8080/api/CreateUser`, {
+        const response = await fetch(`http://${currentIP}:8080/api/EditUser`, {
 		method: 'POST', // *GET, POST, PUT, DELETE, etc.
 		mode: 'cors', // no-cors, *cors, same-origin
 		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
