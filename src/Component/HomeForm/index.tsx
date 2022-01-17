@@ -88,7 +88,7 @@ function ChangePassForm(props:any){
 		headers: {
 		'Content-Type': 'application/json'
 		},
-				body: JSON.stringify({"key":userData.loginKey,"pwd":oldPwd,"newpwd":newPwd}) // body data type must match "Content-Type" header
+				body: JSON.stringify({"key":userData.loginKey,"pwd":oldPwd,"newPwd":newPwd}) // body data type must match "Content-Type" header
 			});
 		if(response.status !== 200){
 			alert("Change Password Unsuccesful");
