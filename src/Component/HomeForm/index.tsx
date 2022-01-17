@@ -2,7 +2,7 @@ import { userData } from "Hooks/ContextProvider";
 import React, { useContext, useState } from "react";
 import "./form.css";
 function ProfileForm(props:any) {
-	const [changePass, setchangePass] = useState(false);
+	const[changePass, setchangePass] = useState(false);
 	// const account = 
 	// 	{
 	// 		schoolID:"19127614",
@@ -52,8 +52,34 @@ function ProfileForm(props:any) {
 		</form>
 	)
 }
-
 function ChangePassForm(props:any){
+	const[oldPwd, setOldPwd] = useState("");
+	const[newPwd, setNewPwd] = useState("");
+	const[confirmPwd, setConfirmPwd] = useState("");
+	function handleOldPwdChange(event:any){
+        event.preventDefault();
+        setOldPwd(event.target.value)
+    }
+	function handleNewPwdChange(event:any){
+        event.preventDefault();
+        setNewPwd(event.target.value)
+    }
+	function handleConfirmPwdChange(event:any){
+        event.preventDefault();
+        setConfirmPwd(event.target.value)
+    }
+	function changePasswordBtnClick(){
+		if(confirmPwd!==newPwd)
+		{
+			alert("Wrong Confirm Password")
+			return;
+		}
+		if(confirmPwd=="" || newPwd=="" || oldPwd=="")
+		{
+			alert("Please fulfill the information")
+			return;
+		}
+	}
 	return(
 		<form className='changepassForm'>
 			<div>
@@ -65,15 +91,18 @@ function ChangePassForm(props:any){
 				</div>
 				<div className='container'>
 					<label htmlFor="oldPass"><b>Old Password</b></label>
-					<input type="text" placeholder="Enter Your Old Password" name="oldPass" required></input>
+					<input type="text" placeholder="Enter Your Old Password" name="oldPass" required
+					onChange={handleOldPwdChange}></input>
 					<label htmlFor="newPass"><b>New Password</b></label>
-					<input type="text" placeholder="Enter Your New Password" name="newPass" required></input>
+					<input type="text" placeholder="Enter Your New Password" name="newPass" required
+					onChange={handleNewPwdChange}></input>
 					<label htmlFor="confirmPass"><b>Confirm</b></label>
-					<input type="text" placeholder="Confirm Your New Password" name="confirmPass" required></input>		
+					<input type="text" placeholder="Confirm Your New Password" name="confirmPass" required
+					onChange={handleConfirmPwdChange}></input>		
 				</div>
 				<div className='container'>
 					<div className='centerBtn'>
-						<button className='landingBtn' type="button">Submit</button>
+						<button className='landingBtn' type="button" onClick={changePasswordBtnClick}>Submit</button>
 					</div>	
 				</div>	
 			</div>
