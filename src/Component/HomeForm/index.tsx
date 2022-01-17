@@ -139,16 +139,18 @@ function AddQuizForm(props:any){
         event.preventDefault();
         setQuizName(event.target.value)
     }
-	
+
 	function SetQuizNameClick(){
 		setAddStage(1)
 	}
-
+	function DoneClick(){
+		setAddStage(2)
+	}
 	function AddQuestionClick(){
 		setNumberQuestion(numberQuestion+1)
 	}
 
-	if(addStage==0)
+	if(addStage===0)
 	{
 		return(
 			<form>
@@ -167,7 +169,7 @@ function AddQuizForm(props:any){
 			</form>
 		)
 	}
-	else{
+	else if(addStage===1){
 		return(
 			<form className="AddQuizForm">
 				<div className='labelContainer'>
@@ -198,9 +200,19 @@ function AddQuizForm(props:any){
 						<option value="false">False</option>
 					</select>
 					<div className='addQuestionBtn'>
-						<button className='landingBtn' type="button" onClick={AddQuestionClick} >Add</button>
+						<button className='landingBtn' type="button" onClick={AddQuestionClick} >Add</button>	
+						<button className='landingBtn' type="button" onClick={DoneClick} >Done</button>					
 					</div>	
 				</div>
+			</form>
+		)
+	}
+	else{
+		return(
+			<form>
+				<div className='labelContainer'>
+							<label className="label"><b>Add Quiz Successfully</b></label>
+				</div>	
 			</form>
 		)
 	}
