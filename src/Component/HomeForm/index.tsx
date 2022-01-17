@@ -1,4 +1,4 @@
-import { userData } from "Hooks/ContextProvider";
+import { currentIP,userData } from "Hooks/ContextProvider";
 import React, { useContext, useState } from "react";
 import { Form } from "react-bootstrap";
 import "./form.css";
@@ -70,7 +70,7 @@ function ChangePassForm(props:any){
         event.preventDefault();
         setConfirmPwd(event.target.value)
     }
-	function changePasswordBtnClick(){
+	async function changePasswordBtnClick(){
 		if(confirmPwd!==newPwd)
 		{
 			alert("Wrong Confirm Password")
@@ -81,7 +81,21 @@ function ChangePassForm(props:any){
 			alert("Please fulfill the information")
 			return;
 		}
-
+		const response = await fetch(`http://${currentIP}:8080/api/changePassword`, {
+		method: 'POST', // *GET, POST, PUT, DELETE, etc.
+		mode: 'cors', // no-cors, *cors, same-origin
+		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+		headers: {
+		'Content-Type': 'application/json'
+		},
+				body: JSON.stringify({"key":userData.loginKey,"pwd":oldPwd,"newpwd":newPwd}) // body data type must match "Content-Type" header
+			});
+		if(response.status !== 200){
+			alert("Change Password Unsuccesful");
+		}
+		else{
+			alert("Change Password Succesful");
+		}
 	}
 	return(
 		<form className='changepassForm'>
