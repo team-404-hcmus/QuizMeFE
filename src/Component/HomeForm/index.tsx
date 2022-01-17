@@ -139,12 +139,15 @@ function AddQuizForm(props:any){
         event.preventDefault();
         setQuizName(event.target.value)
     }
+	
 	function SetQuizNameClick(){
 		setAddStage(1)
 	}
+
 	function AddQuestionClick(){
 		setNumberQuestion(numberQuestion+1)
 	}
+
 	if(addStage==0)
 	{
 		return(
