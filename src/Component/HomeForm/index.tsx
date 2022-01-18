@@ -198,10 +198,10 @@ function AddQuizForm(props:any){
 		}
 		setQuestionList([...questionList,question])
 		setQuestionText("");
-		setAns1("");setIsCorrect1(true);
-		setAns2("");setIsCorrect2(true);
-		setAns3("");setIsCorrect3(true);
-		setAns4("");setIsCorrect4(true);
+		setAns1("");
+		setAns2("");
+		setAns3("");
+		setAns4("");
 		setNumberQuestion(numberQuestion+1)
 	}
 	async function DoneClick(){
@@ -264,24 +264,24 @@ function AddQuizForm(props:any){
 					
 				<div className='container'>
 					<p className="questCount" >QUESTION NUMBER: {numberQuestion}</p>	
-					<input type="text" defaultValue={questionText} required id="questionName" onChange={event=>setQuestionText(event.target.value)} 
+					<input type="text" value={questionText} required id="questionName" onChange={event=>setQuestionText(event.target.value)} 
 					placeholder="Input Question"/>
-					<input type="text" required id="ans1" placeholder="Answer 1" onChange={event => setAns1(event.target.value)}/>
-					<select id="isCorrect1" onChange={event => setIsCorrect1(convertToBool(event.target.value))}>
+					<input type="text"  value={ans1}required id="ans1" placeholder="Answer 1" onChange={event => setAns1(event.target.value)}/>
+					<select id="isCorrect1"onChange={event => setIsCorrect1(convertToBool(event.target.value))}>
 						<option value="true">True</option>
 						<option value="false">False</option>
 					</select>
-					<input type="text" required id="ans2" placeholder="Answer 2"onChange={event => setAns2(event.target.value)}/>
+					<input type="text" value={ans2} required id="ans2" placeholder="Answer 2"onChange={event => setAns2(event.target.value)}/>
 					<select id="isCorrect2" onChange={event => setIsCorrect2(convertToBool(event.target.value))}>
 						<option value="true">True</option>
 						<option value="false">False</option>
 					</select>
-					<input type="text" required id="ans3" placeholder="Answer 3"onChange={event => setAns3(event.target.value)}/>
+					<input type="text" value={ans3}required id="ans3" placeholder="Answer 3"onChange={event => setAns3(event.target.value)}/>
 					<select id="isCorrect3"onChange={event => setIsCorrect3(convertToBool(event.target.value))}>
 						<option value="true">True</option>
 						<option value="false">False</option>
 					</select>
-					<input type="text" required id="ans4" placeholder="Answer 4"onChange={event => setAns4(event.target.value)}/>
+					<input type="text" value={ans4} required id="ans4" placeholder="Answer 4"onChange={event => setAns4(event.target.value)}/>
 					<select id="isCorrect4"onChange={event => setIsCorrect4(convertToBool(event.target.value))}>
 						<option value="true">True</option>
 						<option value="false">False</option>

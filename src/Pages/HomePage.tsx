@@ -157,7 +157,7 @@ function HomePage(props:any)
                             filteredData?filteredData.reverse().map((quizname:any)=>(
                                 <div key={quizname._id} className='quizContainer'>
                                     <p className='quizName'>{quizname.name}</p>
-                                    <p className='quizUpdateDate'>{quizname?.updatedDate ?? "not found"}</p>
+                                   
                                     <FontAwesomeIcon className='playIcon'icon={faCaretRight}size="5x"
                                     onClick={() => playGame(quizname._id)}></FontAwesomeIcon> 
                                 </div>                      
