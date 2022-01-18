@@ -186,8 +186,12 @@ function AdminPage(props:any){
                                             onChange={handleEditAccountChange}/>
                                         </td>
                                         <td> 
-                                            <input id="accColumn" type="text" name="role" placeholder='Input Role' required
-                                            onChange={handleEditAccountChange}/>
+                                            <select id="accColumn" name="role" onChange={handleEditAccountChange}>
+                                                <option value="student">Student</option>
+                                                <option value="teacher">Teacher</option>
+                                                <option value="admin">Admin</option>                       
+                                            </select>
+                                          
                                         </td>
                                         <td>
                                             <div id="actionBtnContainer" >
@@ -240,12 +244,17 @@ function AdminPage(props:any){
                                  onChange={handleAddAccountChange}/>
                             </td>
                             <td> 
+                                
                                 <input id="accColumn" type="text" name="gender" placeholder='Input Gender' required
                                  onChange={handleAddAccountChange}/>
                             </td>
                             <td> 
-                                <input id="accColumn" type="text" name="role" placeholder='Input Role' required
-                                 onChange={handleAddAccountChange}/>
+                                <select id="accColumn" name="role" onChange={handleAddAccountChange}>
+                                    <option value="student">Student</option>
+                                    <option value="teacher">Teacher</option>
+                                    <option value="admin">Admin</option>                       
+                                </select>
+                              
                             </td>
                             <td>
                                 <div id="actionBtnContainer" >                                  
