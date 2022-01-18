@@ -206,7 +206,6 @@ function AddQuizForm(props:any){
 			questions: questionList,
 		}
 		console.log(newquiz)
-		return;
 		const response = await fetch(`http://${currentIP}:8080/api/AddQuestion`, {
 			method: 'POST', // *GET, POST, PUT, DELETE, etc.
 			mode: 'cors', // no-cors, *cors, same-origin
