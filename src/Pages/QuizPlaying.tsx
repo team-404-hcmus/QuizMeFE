@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import "./QuizPlaying.css";
-interface answer {
+export interface answer {
 	answerText:string,
 	isCorrect:boolean
 }

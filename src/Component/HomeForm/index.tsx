@@ -2,7 +2,7 @@ import { currentIP,userData } from "Hooks/ContextProvider";
 import React, { useContext, useState } from "react";
 import { Form } from "react-bootstrap";
 import "./form.css";
-import { Question} from "Pages/QuizPlaying";
+import { Question,answer} from "Pages/QuizPlaying";
 function ProfileForm(props:any) {
 	const[changePass, setchangePass] = useState(false);
 	// const account = 
@@ -151,28 +151,59 @@ function JoinRoomForm(props:any){
 }
 interface NewQuiz{
 	name:any
+	updatedDate:any
 	question: Question[],
 }
 function AddQuizForm(props:any){ 
 	const[addStage, setAddStage] = useState(0);
+	// Tên Quiz
 	const[quizName, setQuizName] = useState("");
-	const[numberQuestion, setNumberQuestion] = useState(0);
-	const[quizQuestion, setQuizQuestion] = useState([] as Question[]);
-	function HandleQuizNameChange(event:any){
-        event.preventDefault();
-        setQuizName(event.target.value)
-    }
-
+	//Câu hỏi
+	const[questionText, setQuestionText] = useState(""); 
+	//Câu trả lời + Đúng sai
+	//1
+	const[ans1, setAns1] = useState("");
+	const[iscorrect1, setIsCorrect1] = useState(false);
+	//2
+	const[ans2, setAns2] = useState("");
+	const[iscorrect2, setIsCorrect2] = useState(false);
+	//3
+	const[ans3, setAns3] = useState("");
+	const[iscorrect3, setIsCorrect3] = useState(false);
+	//4
+	const[ans4, setAns4] = useState("");
+	const[iscorrect4, setIsCorrect4] = useState(false);
+	//bộ câu trả lời
+	const [answersList, setAnswersList]=useState([]as answer[])
+	//
+	const[numberQuestion, setNumberQuestion] = useState(0);// số câu hỏi
+	const[quiz, setQuiz] = useState<NewQuiz>();
 	function SetQuizNameClick(){
 		setAddStage(1)
 	}
-	function DoneClick(){
-		setAddStage(2)
-	}
 	function AddQuestionClick(){
+		let answers1:answer={answerText:ans1,isCorrect:iscorrect1}
+		let answers2:answer={answerText:ans2,isCorrect:iscorrect2}
+		let answers3:answer={answerText:ans3,isCorrect:iscorrect3}
+		let answers4:answer={answerText:ans4,isCorrect:iscorrect4}
+		let answerlist:answer[]=[answers1,answers2,answers3,answers4]
+		setAnswersList(answerlist)
 		setNumberQuestion(numberQuestion+1)
 	}
-
+	function DoneClick(){
+		var today = new Date();
+		var date = today.getFullYear()+'/'+(today.getMonth()+1)+'/'+today.getDate();
+		alert(date)
+	
+		setAddStage(2)
+	}
+	function convertToBool(option:string)
+	{
+		if(option=="true"){
+			return true
+		}
+		return false
+	}
 	if(addStage===0)
 	{
 		return(
@@ -182,7 +213,7 @@ function AddQuizForm(props:any){
 				</div>	
 				<div className='container'>
 					<input type="text" placeholder="Enter Quiz Name" className='roomPin' required
-					onChange={HandleQuizNameChange}></input>							
+					onChange={event => setQuizName(event.target.value)}></input>							
 				</div>
 				<div className='container'>
 					<div className='addQuizBtn'>
@@ -201,24 +232,25 @@ function AddQuizForm(props:any){
 					
 				<div className='container'>
 					<p className="questCount">QUESTION NUMBER: {numberQuestion}</p>	
-					<input type="text" required id="questionName" placeholder="Input Question"/>
-					<input type="text" required id="ans1" placeholder="Answer 1"/>
-					<select id="isCorrect1">
+					<input type="text" required id="questionName" onChange={event=>setQuestionText(event.target.value)} 
+					placeholder="Input Question"/>
+					<input type="text" required id="ans1" placeholder="Answer 1" onChange={event => setAns1(event.target.value)}/>
+					<select id="isCorrect1" onChange={event => setIsCorrect1(convertToBool(event.target.value))}>
 						<option value="true">True</option>
 						<option value="false">False</option>
 					</select>
-					<input type="text" required id="ans2" placeholder="Answer 2"/>
-					<select id="isCorrect2">
+					<input type="text" required id="ans2" placeholder="Answer 2"onChange={event => setAns2(event.target.value)}/>
+					<select id="isCorrect2" onChange={event => setIsCorrect2(convertToBool(event.target.value))}>
 						<option value="true">True</option>
 						<option value="false">False</option>
 					</select>
-					<input type="text" required id="ans3" placeholder="Answer 3"/>
-					<select id="isCorrect3">
+					<input type="text" required id="ans3" placeholder="Answer 3"onChange={event => setAns3(event.target.value)}/>
+					<select id="isCorrect3"onChange={event => setIsCorrect3(convertToBool(event.target.value))}>
 						<option value="true">True</option>
 						<option value="false">False</option>
 					</select>
-					<input type="text" required id="ans4" placeholder="Answer 4"/>
-					<select id="isCorrect4">
+					<input type="text" required id="ans4" placeholder="Answer 4"onChange={event => setAns4(event.target.value)}/>
+					<select id="isCorrect4"onChange={event => setIsCorrect4(convertToBool(event.target.value))}>
 						<option value="true">True</option>
 						<option value="false">False</option>
 					</select>
