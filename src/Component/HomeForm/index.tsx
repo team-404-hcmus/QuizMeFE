@@ -192,9 +192,7 @@ function AddQuizForm(props:any){
 			questionText:questionText,
 			answerOptions:answerlist
 		}
-		setQuestionList(function (questionList){
-			return [...questionList,question]
-		})
+		setQuestionList([...questionList,question])
 		setAns1("");setIsCorrect1(false);
 		setAns2("");setIsCorrect2(false);
 		setAns3("");setIsCorrect3(false);
