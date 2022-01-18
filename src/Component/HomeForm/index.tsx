@@ -181,6 +181,11 @@ function AddQuizForm(props:any){
 		setAddStage(1)
 	}
 	function AddQuestionClick(){
+		if(ans1==""||ans2==""||ans3==""||ans4==""||questionText=="")
+		{
+			alert("Please fill out all information")
+			return
+		}
 		let answerlist:answer[]=[
 			{answerText:ans1,isCorrect:iscorrect1},
 			{answerText:ans2,isCorrect:iscorrect2},
@@ -192,10 +197,11 @@ function AddQuizForm(props:any){
 			answerOptions:answerlist
 		}
 		setQuestionList([...questionList,question])
-		setAns1("");setIsCorrect1(false);
-		setAns2("");setIsCorrect2(false);
-		setAns3("");setIsCorrect3(false);
-		setAns4("");setIsCorrect4(false);
+		setQuestionText("");
+		setAns1("");setIsCorrect1(true);
+		setAns2("");setIsCorrect2(true);
+		setAns3("");setIsCorrect3(true);
+		setAns4("");setIsCorrect4(true);
 		setNumberQuestion(numberQuestion+1)
 	}
 	async function DoneClick(){
@@ -257,8 +263,8 @@ function AddQuizForm(props:any){
 				</div>					
 					
 				<div className='container'>
-					<p className="questCount">QUESTION NUMBER: {numberQuestion}</p>	
-					<input type="text" required id="questionName" onChange={event=>setQuestionText(event.target.value)} 
+					<p className="questCount" >QUESTION NUMBER: {numberQuestion}</p>	
+					<input type="text" defaultValue={questionText} required id="questionName" onChange={event=>setQuestionText(event.target.value)} 
 					placeholder="Input Question"/>
 					<input type="text" required id="ans1" placeholder="Answer 1" onChange={event => setAns1(event.target.value)}/>
 					<select id="isCorrect1" onChange={event => setIsCorrect1(convertToBool(event.target.value))}>
