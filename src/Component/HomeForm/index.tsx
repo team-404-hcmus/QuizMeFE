@@ -151,8 +151,7 @@ function JoinRoomForm(props:any){
 }
 interface NewQuiz{
 	name:any
-	updatedDate:any
-	question: Question[],
+	questions: Question[],
 }
 function AddQuizForm(props:any){ 
 	const[addStage, setAddStage] = useState(0);
@@ -204,8 +203,7 @@ function AddQuizForm(props:any){
 		var date = today.getFullYear()+'/'+(today.getMonth()+1)+'/'+today.getDate();
 		let newquiz:NewQuiz={
 			name:quizName,
-			updatedDate:date,
-			question: questionList,
+			questions: questionList,
 		}
 		console.log(newquiz)
 		const response = await fetch(`http://${currentIP}:8080/api/AddQuestion`, {
@@ -216,7 +214,6 @@ function AddQuizForm(props:any){
 			'Content-Type': 'application/json'
 			// 'Content-Type': 'application/x-www-form-urlencoded',
 			},
-
 					body: JSON.stringify({Question:newquiz,"key":userData.loginKey}) 
 					// body data type must match "Content-Type" header
 			});
@@ -227,7 +224,7 @@ function AddQuizForm(props:any){
 	}
 	function convertToBool(option:string)
 	{
-		if(option=="true"){
+		if(option==="true"){
 			return true
 		}
 		return false
