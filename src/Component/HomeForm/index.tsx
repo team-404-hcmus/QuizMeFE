@@ -162,16 +162,16 @@ function AddQuizForm(props:any){
 	//Câu trả lời + Đúng sai
 	//1
 	const[ans1, setAns1] = useState("");
-	const[iscorrect1, setIsCorrect1] = useState(false);
+	const[iscorrect1, setIsCorrect1] = useState(true);
 	//2
 	const[ans2, setAns2] = useState("");
-	const[iscorrect2, setIsCorrect2] = useState(false);
+	const[iscorrect2, setIsCorrect2] = useState(true);
 	//3
 	const[ans3, setAns3] = useState("");
-	const[iscorrect3, setIsCorrect3] = useState(false);
+	const[iscorrect3, setIsCorrect3] = useState(true);
 	//4
 	const[ans4, setAns4] = useState("");
-	const[iscorrect4, setIsCorrect4] = useState(false);
+	const[iscorrect4, setIsCorrect4] = useState(true);
 	//Bộ câu hỏi
 	const [questionList, setQuestionList]=useState([]as Question[])
 	//
@@ -206,6 +206,7 @@ function AddQuizForm(props:any){
 			questions: questionList,
 		}
 		console.log(newquiz)
+		return;
 		const response = await fetch(`http://${currentIP}:8080/api/AddQuestion`, {
 			method: 'POST', // *GET, POST, PUT, DELETE, etc.
 			mode: 'cors', // no-cors, *cors, same-origin
@@ -224,6 +225,7 @@ function AddQuizForm(props:any){
 	}
 	function convertToBool(option:string)
 	{
+		console.log(option)
 		if(option==="true"){
 			return true
 		}
