@@ -173,8 +173,8 @@ function AddQuizForm(props:any){
 	//4
 	const[ans4, setAns4] = useState("");
 	const[iscorrect4, setIsCorrect4] = useState(false);
-	//bộ câu trả lời
-	const [answersList, setAnswersList]=useState([]as answer[])
+	//Bộ câu hỏi
+	const [questionList, setQuestionList]=useState([]as Question[])
 	//
 	const[numberQuestion, setNumberQuestion] = useState(0);// số câu hỏi
 	const[quiz, setQuiz] = useState<NewQuiz>();
@@ -182,20 +182,50 @@ function AddQuizForm(props:any){
 		setAddStage(1)
 	}
 	function AddQuestionClick(){
-		let answers1:answer={answerText:ans1,isCorrect:iscorrect1}
-		let answers2:answer={answerText:ans2,isCorrect:iscorrect2}
-		let answers3:answer={answerText:ans3,isCorrect:iscorrect3}
-		let answers4:answer={answerText:ans4,isCorrect:iscorrect4}
-		let answerlist:answer[]=[answers1,answers2,answers3,answers4]
-		setAnswersList(answerlist)
+		let answerlist:answer[]=[
+			{answerText:ans1,isCorrect:iscorrect1},
+			{answerText:ans2,isCorrect:iscorrect2},
+			{answerText:ans3,isCorrect:iscorrect3},
+			{answerText:ans4,isCorrect:iscorrect4}
+		]
+		let question:Question={
+			questionText:questionText,
+			answerOptions:answerlist
+		}
+		setQuestionList(function (questionList){
+			return [...questionList,question]
+		})
+		setAns1("");setIsCorrect1(false);
+		setAns2("");setIsCorrect2(false);
+		setAns3("");setIsCorrect3(false);
+		setAns4("");setIsCorrect4(false);
 		setNumberQuestion(numberQuestion+1)
 	}
-	function DoneClick(){
+	async function DoneClick(){
 		var today = new Date();
 		var date = today.getFullYear()+'/'+(today.getMonth()+1)+'/'+today.getDate();
-		alert(date)
-	
-		setAddStage(2)
+		let newquiz:NewQuiz={
+			name:quizName,
+			updatedDate:date,
+			question: questionList,
+		}
+		console.log(newquiz)
+		const response = await fetch(`http://${currentIP}:8080/api/AddQuestion`, {
+			method: 'POST', // *GET, POST, PUT, DELETE, etc.
+			mode: 'cors', // no-cors, *cors, same-origin
+			cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+			headers: {
+			'Content-Type': 'application/json'
+			// 'Content-Type': 'application/x-www-form-urlencoded',
+			},
+
+					body: JSON.stringify({Question:newquiz,"key":userData.loginKey}) 
+					// body data type must match "Content-Type" header
+			});
+			if(response.status === 200)
+			{
+				setAddStage(2)
+			}
 	}
 	function convertToBool(option:string)
 	{
