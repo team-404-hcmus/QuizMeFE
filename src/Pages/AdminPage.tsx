@@ -28,14 +28,16 @@ function AdminPage(props:any){
         pwd:"1",
         fullname: "", 
         dob: "", 
-        gender: "" 
+        gender: "",
+        role:"", 
     })
     const [editedAccount, setEditedAccount] = useState({
         username:"",
         pwd:"",
         fullname: "", 
         dob: "", 
-        gender: "" 
+        gender: "", 
+        role:"", 
     })
     const [editAccounttId, setEditAccountId] = useState(null);
     //thêm account
@@ -56,7 +58,7 @@ function AdminPage(props:any){
             fullname: addNewAccount.fullname,
             dob: addNewAccount.dob,
             gender: addNewAccount.gender,
-            role:"student"
+            role:addNewAccount.role
         };
         const response = await fetch(`http://${currentIP}:8080/api/CreateUser`, {
 		method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -100,7 +102,8 @@ function AdminPage(props:any){
             pwd: account.pwd,
             fullname: editedAccount.fullname,
             dob: editedAccount.dob,
-            gender: editedAccount.gender
+            gender: editedAccount.gender,
+            role:editedAccount.role
         };
     
         setEditedAccount(newAcc);
@@ -121,7 +124,8 @@ function AdminPage(props:any){
             pwd: editedAccount.pwd,
             fullname: editedAccount.fullname,
             dob: editedAccount.dob,
-            gender: editedAccount.gender
+            gender: editedAccount.gender,
+            role: editedAccount.role,
         }; 
         const response = await fetch(`http://${currentIP}:8080/api/EditUser`, {
 		method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -149,9 +153,8 @@ function AdminPage(props:any){
                 <table>
                     <thead>
                         <tr className="tableName">                     
-                            <th colSpan={5}>                       
-                                STUDENTS INFO  
-                                                                                                           
+                            <th colSpan={6}>                       
+                                STUDENTS INFO                                                                                                            
                             </th>
                         </tr>
                         <tr className="headerRow">
@@ -159,6 +162,7 @@ function AdminPage(props:any){
                             <th className="columnName">NAME</th>
                             <th className="columnName">DOB</th>
                             <th className="columnName">GENDER</th>
+                            <th className="columnName">ROLE</th>
                             <th className="columnName">ACTIONS</th>
                         </tr>
                     </thead>
@@ -181,6 +185,10 @@ function AdminPage(props:any){
                                             <input id="accColumn" type="text" name="gender" placeholder='Input Gender' required
                                             onChange={handleEditAccountChange}/>
                                         </td>
+                                        <td> 
+                                            <input id="accColumn" type="text" name="role" placeholder='Input Role' required
+                                            onChange={handleEditAccountChange}/>
+                                        </td>
                                         <td>
                                             <div id="actionBtnContainer" >
                                                 <FontAwesomeIcon className='actionBtn' icon={faCheck}
@@ -197,6 +205,7 @@ function AdminPage(props:any){
                                         <td>{val.fullname}</td>
                                         <td>{val.dob}</td>                     
                                         <td>{val.gender}</td>  
+                                        <td>{val.role}</td>  
                                         <td>
                                             <div id="actionBtnContainer" >
                                                 <FontAwesomeIcon className='actionBtn' icon={faEdit}
@@ -213,7 +222,7 @@ function AdminPage(props:any){
                     </tbody>
                     <thead>
                         <tr className="tableName">                     
-                            <th colSpan={5}>                       
+                            <th colSpan={6}>                       
                                 ADD ACOUNTS                                                                          
                             </th>
                         </tr>
@@ -232,6 +241,10 @@ function AdminPage(props:any){
                             </td>
                             <td> 
                                 <input id="accColumn" type="text" name="gender" placeholder='Input Gender' required
+                                 onChange={handleAddAccountChange}/>
+                            </td>
+                            <td> 
+                                <input id="accColumn" type="text" name="role" placeholder='Input Role' required
                                  onChange={handleAddAccountChange}/>
                             </td>
                             <td>

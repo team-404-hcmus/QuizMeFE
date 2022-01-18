@@ -56,6 +56,11 @@ function HomePage(props:any)
         }
     } 
     function addQuizBtnClick(){
+        if(userData.role!="teacher")
+        {
+            alert("only for teacher")
+            return;
+        }
         setAddQuizForm( function(e){
             return !e;
         })
